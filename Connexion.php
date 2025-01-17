@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['password'] = $user['password'];
 
             echo 'Connexion réussie !';
-            echo "<form action='index.html' method='post'>
+            echo "<form action='index.php' method='post'>
                     <input type='submit' value='Accéder à votre compte'/><br>
                   </form>";
         } else {

@@ -1,3 +1,6 @@
+<?php
+sdsdqs
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,6 +31,8 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#affiche">A l'Affiche</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Catalogue.php">Catalogue</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rejoint Nous</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -99,6 +104,83 @@
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
                                     <h4 class="text-white">Pop corn</h4>
                                     <p class="mb-0 text-white-50">Movie room vous propose aussi des Pop Corn, boisson et plein d'autres chose si vous souhaiter grignoter pendant le film.rr</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-1" id="affiche">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-3 gx-lg-4 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="assets/img/Mufasa.webp" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+
+                                <div class="text-center">
+                                    <h5 class="fw-bolder">Mufasa : Le Roi Lion</h5>
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    Aventure, Animation, Famille, Musical
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="assets/img/amourpresent.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">L'Amour au présent</h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    Comédie dramatique, Drame, Romance
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="assets/img/criminal.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Criminal Squad : Pantera</h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    Action, Policier, Thriller
                                 </div>
                             </div>
                         </div>
