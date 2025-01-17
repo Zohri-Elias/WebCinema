@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Films</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #343a40;
+            border-right: 1px solid #ddd;
+            position: fixed;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+        .sidebar-header {
+            padding: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            background-color: #222;
+        }
+        .sidebar-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar-menu li {
+            padding: 15px 20px;
+            font-size: 1.1em;
+            color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .sidebar-menu li:hover {
+            background-color: #555;
+        }
+        .menu-header {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #777;
+            padding: 10px 20px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+            padding: 15px;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 2em;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-header">MATERIAL ADMIN PRO</div>
+    <ul class="sidebar-menu">
+        <li>Overview</li>
+        <li class="menu-header">Gestion des films</li>
+        <ul>
+            <li onclick="window.location.href='add_film.html'">Ajouter</li>
+            <li onclick="window.location.href='modify_film.html'">Modifier</li>
+            <li onclick="window.location.href='Supression_film.html'">Supprimer des films</li>
+        </ul>
+
+        <li class="menu-header">Gestion des Séances</li>
+        <ul>
+            <li onclick="window.location.href='planifier_seance.html'">Planifier</li>
+            <li onclick="window.location.href='Modifier_seance.html'">Modifier</li>
+            <li onclick="window.location.href='Delete__session.html'">Supprimer des séances</li> <!-- Lien vers la page de suppression -->
+        </ul>
+
+        <li class="menu-header">Gestion des Utilisateurs</li>
+        <ul>
+            <li>Ajouter</li>
+            <li>Modifier</li>
+            <li>Supprimer</li>
+        </ul>
+    </ul>
+</div>
+
+<div class="content">
+    <h1>Page principale de gestion des films</h1>
+    <p>Choisissez une option dans le menu latéral pour ajouter ou modifier un film.</p>
+</div>
+
+<div class="footer">
+    <p>&copy; 2025 Cinema Admin. Tous droits réservés.</p>
+</div>
+
+</body>
+</html>
