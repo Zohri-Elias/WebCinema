@@ -85,7 +85,7 @@ class Inscription
 
     public function inscrire()
     {
-        $bdd = new PDO('mysql:host=localhost;dbname=Webcinema', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=webcinema', 'root', '');
         $req = $bdd->prepare('INSERT INTO utilisateur (nom , prenom , email , mdp) VALUES (:prenom, :nom, :email , :mdp)');
         $req->execute(array(
             'nom' => $this->getNom(),
