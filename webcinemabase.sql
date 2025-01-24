@@ -6,11 +6,12 @@ CREATE TABLE IF NOT EXISTS `film` (
                                       `id_film` int NOT NULL AUTO_INCREMENT,
                                       `nom_film` varchar(50) NOT NULL,
     `duree` varchar(50) NOT NULL,
-    `genre` enum('Comédie','Drame','Thriller','Action','Horreur','Science-fiction','Fantastique') NOT NULL,
+    `genre` enum('Comédie', 'Drame', 'Thriller', 'Action', 'Horreur', 'Science-fiction', 'Fantastique', 'Aventure', 'Animation', 'Biographie', 'Documentaire', 'Famille', 'Fantaisie', 'Historique', 'Musical', 'Mystère', 'Romance', 'Sport', 'Guerre', 'Western') NOT NULL,
     `description` varchar(400) DEFAULT NULL,
     `image` blob,
     PRIMARY KEY (`id_film`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
