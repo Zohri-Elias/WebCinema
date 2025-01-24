@@ -1,5 +1,12 @@
 <?php
+$bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '', [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+]);
+
+// Récupérer les 6 derniers films ajoutés
+$films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 6")->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -113,29 +120,23 @@
         <section class="py-1" id="affiche">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-3 gx-lg-4 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="assets/img/Mufasa.webp" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Mufasa : Le Roi Lion</h5>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
+                    <?php foreach ($films as $film): ?>
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Image du film -->
+                                <img class="card-img-top" src="assets/img/<?= htmlspecialchars($film['image']) ?>" alt="<?= htmlspecialchars($film['titre']) ?>" />
+                                <!-- Détails du film -->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <h5 class="fw-bolder"><?= htmlspecialchars($film['titre']) ?></h5>
+                                        <div class="text-center">
+                                            <?= htmlspecialchars($film['genre']) ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="text-center">
-                                    Aventure, Animation, Famille, Musical
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
@@ -236,12 +237,5 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-        <!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
-
-        <a href="Administration.html">Aller à la page 2</a>
-
-
-        <!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
     </body>
 </html>
