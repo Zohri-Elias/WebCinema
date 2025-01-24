@@ -1,10 +1,10 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=exo;charset=utf8', 'root', '', [
+$bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ]);
 
 // Récupérer les 6 derniers films ajoutés
-$films = $bdd->query("SELECT * FROM films ORDER BY date_ajout DESC LIMIT 6")->fetchAll(PDO::FETCH_ASSOC);
+$films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 6")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
