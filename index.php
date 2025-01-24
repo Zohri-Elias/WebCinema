@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -237,5 +236,12 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+
+        <a href="Administration.html">Aller à la page 2</a>
+
+
+        <!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
     </body>
 </html>
