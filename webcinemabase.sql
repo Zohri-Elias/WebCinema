@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
                                              `nom` varchar(50) NOT NULL,
     `prenom` varchar(50) NOT NULL,
     `email` varchar(50) NOT NULL,
-    `passe` varchar(255) NOT NULL,
+    `mdp` varchar(255) NOT NULL,
     `role` enum('Client','Admin') NOT NULL,
     PRIMARY KEY (`id_utilisateur`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
