@@ -1,3 +1,12 @@
+<?php
+$bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '', [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+]);
+
+// Récupérer les 6 derniers films ajoutés
+$films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,11 +37,13 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#affiche">A l'Affiche</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Catalogue.php">Catalogue</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rejoint Nous</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="connexion.php">Connexion</a></li>
-                                <li><a class="dropdown-item" href="inscription.php">Inscription</a></li>
+                                <li><a class="dropdown-item" href="Connexion.html">Connexion</a></li>
+                                <li><a class="dropdown-item" href="Inscription.html">Inscription</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -103,6 +114,71 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-1" id="affiche">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-3 gx-lg-4 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+                    <?php foreach ($films as $film){?>
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Image du film -->
+                                <img class="card-img-top" src="<?= htmlspecialchars($film['image']) ?>" alt="<?= htmlspecialchars($film['nom_film']) ?>" />
+                                <!-- Détails du film -->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <h5 class="fw-bolder"><?= htmlspecialchars($film['nom_film']) ?></h5>
+                                        <div class="text-center">
+                                            <?= htmlspecialchars($film['genre']) ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </section>
+        <!-- Contact-->
+        <section class="contact-section bg-black">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Address</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">5 AV du Général de Gaulle, 93440 Dugny</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Email</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50"><a href="#!">movieroom@gmail.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Phone</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">+33 199 999 999</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </section>

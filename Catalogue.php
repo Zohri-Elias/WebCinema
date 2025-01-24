@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -21,7 +25,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#voir">A voir</a></li>
                         <li class="nav-item"><a class="nav-link" href="#profile.html">Profile</a></li>
                     </ul>
@@ -57,14 +61,6 @@
 
                                 <div class="text-center">
                                         <h5 class="fw-bolder">Mufasa : Le Roi Lion</h5>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    10 €
                                 </div>
                                 <div class="text-center">
                                     Aventure, Animation, Famille, Musical
@@ -92,15 +88,6 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">L'Amour au présent</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    10 €
                                 </div>
                                 <div class="text-center">
                                     Comédie dramatique, Drame, Romance
@@ -128,15 +115,6 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Criminal Squad : Pantera</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    10 €
                                 </div>
                                 <div class="text-center">
                                     Action, Policier, Thriller
@@ -164,15 +142,6 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Un ours dans le jura</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    10 €
                                 </div>
                                 <div class="text-center">
                                     Comédie, Thriller
@@ -200,15 +169,6 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Vaiana 2</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    10 €
                                 </div>
                                 <div class="text-center">
                                     Aventure, Animation, Famille
@@ -236,15 +196,6 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Vaiana 2</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    10 €
                                 </div>
                                 <div class="text-center">
                                     Drame
@@ -272,17 +223,8 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
                                     <!-- Product price-->
                                     <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -300,16 +242,7 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Popular Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
                                     <!-- Product price-->
-                                    $40.00
                                 </div>
                             </div>
                             <!-- Product actions-->
