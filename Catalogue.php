@@ -61,13 +61,6 @@
 
                                 <div class="text-center">
                                         <h5 class="fw-bolder">Mufasa : Le Roi Lion</h5>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
                                 </div>
                                 <div class="text-center">
                                     Aventure, Animation, Famille, Musical

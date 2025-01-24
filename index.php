@@ -4,7 +4,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '',
 ]);
 
 // Récupérer les 6 derniers films ajoutés
-$films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 6")->fetchAll(PDO::FETCH_ASSOC);
+$films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -120,15 +120,15 @@ $films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 6")->fet
         <section class="py-1" id="affiche">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-3 gx-lg-4 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
-                    <?php foreach ($films as $film): ?>
+                    <?php foreach ($films as $film){?>
                         <div class="col mb-5">
                             <div class="card h-100">
                                 <!-- Image du film -->
-                                <img class="card-img-top" src="assets/img/<?= htmlspecialchars($film['image']) ?>" alt="<?= htmlspecialchars($film['titre']) ?>" />
+                                <img class="card-img-top" src="<?= htmlspecialchars($film['image']) ?>" alt="<?= htmlspecialchars($film['nom_film']) ?>" />
                                 <!-- Détails du film -->
                                 <div class="card-body p-4">
                                     <div class="text-center">
-                                        <h5 class="fw-bolder"><?= htmlspecialchars($film['titre']) ?></h5>
+                                        <h5 class="fw-bolder"><?= htmlspecialchars($film['nom_film']) ?></h5>
                                         <div class="text-center">
                                             <?= htmlspecialchars($film['genre']) ?>
                                         </div>
@@ -136,55 +136,7 @@ $films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 6")->fet
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="assets/img/amourpresent.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">L'Amour au présent</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    Comédie dramatique, Drame, Romance
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="assets/img/criminal.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Criminal Squad : Pantera</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    Action, Policier, Thriller
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
