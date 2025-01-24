@@ -42,8 +42,8 @@ $films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 3")->fet
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rejoint Nous</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="Connexion.php">Connexion</a></li>
-                                <li><a class="dropdown-item" href="Inscription.php">Inscription</a></li>
+                                <li><a class="dropdown-item" href="Connexion.html">Connexion</a></li>
+                                <li><a class="dropdown-item" href="Inscription.html">Inscription</a></li>
                             </ul>
                         </li>
                     </ul>

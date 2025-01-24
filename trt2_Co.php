@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<h1>Échec de la connexion</h1>";
         echo "<p>Adresse email ou mot de passe incorrect.</p>";
-        echo '<a href="connexion.html">Retour au formulaire</a>';
+        echo '<a href="Connexion.html">Retour au formulaire</a>';
     }
 }
 
