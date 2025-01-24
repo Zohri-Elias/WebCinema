@@ -6,11 +6,12 @@ CREATE TABLE IF NOT EXISTS `film` (
                                       `id_film` int NOT NULL AUTO_INCREMENT,
                                       `nom_film` varchar(50) NOT NULL,
     `duree` varchar(50) NOT NULL,
-    `genre` enum('Comédie','Drame','Thriller','Action','Horreur','Science-fiction','Fantastique') NOT NULL,
+    `genre` enum('Comédie', 'Drame', 'Thriller', 'Action', 'Horreur', 'Science-fiction', 'Fantastique', 'Aventure', 'Animation', 'Biographie', 'Documentaire', 'Famille', 'Fantaisie', 'Historique', 'Musical', 'Mystère', 'Romance', 'Sport', 'Guerre', 'Western') NOT NULL,
     `description` varchar(400) DEFAULT NULL,
     `image` blob,
     PRIMARY KEY (`id_film`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
@@ -64,6 +65,7 @@ ALTER TABLE `sceance`
 
 
 ALTER TABLE film ADD COLUMN date_ajout TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
 
 INSERT INTO film VALUES (2,"Mufasa : Le Roi Lion",'1h48',"Aventure",'Rafiki raconte à la jeune lionne Kiara - la fille de Simba et Nala – la légende de Mufasa. Il est aidé en cela par Timon et Pumbaa, dont les formules choc sont désormais bien connues. Relatée sous forme de flashbacks, l''histoire de Mufasa est celle d’un lionceau orphelin, seul et désemparé qui, un jour, fait la connaissance du sympathique Taka, héritier d''une lignée royale. Cette rencontre fortuite marque le point de départ d’un périple riche en péripéties d’un petit groupe « d’indésirables » qui s’est formé autour d’eux et qui est désormais à la recherche de son destin. Leurs liens d’amitié seront soumis à rude épreuve lorsqu’il leur faudra faire équipe pour échapper à un ennemi aussi menaçant que mortel…
 ',null,null)
