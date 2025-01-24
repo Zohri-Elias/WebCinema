@@ -1,14 +1,7 @@
-<<<<<<< HEAD
+
 CREATE DATABASE webcinema
 
-=======
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
->>>>>>> 57fcd362b786b4c1f4312b0eb07da53e34d8bf8c
 
 DROP TABLE IF EXISTS `film`;
 CREATE TABLE IF NOT EXISTS `film` (
@@ -21,11 +14,7 @@ CREATE TABLE IF NOT EXISTS `film` (
   PRIMARY KEY (`id_film`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 57fcd362b786b4c1f4312b0eb07da53e34d8bf8c
 DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id_reservation` int NOT NULL AUTO_INCREMENT,
@@ -46,10 +35,7 @@ CREATE TABLE IF NOT EXISTS `salle` (
   PRIMARY KEY (`id_salle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 57fcd362b786b4c1f4312b0eb07da53e34d8bf8c
 
 DROP TABLE IF EXISTS `sceance`;
 CREATE TABLE IF NOT EXISTS `sceance` (
@@ -77,10 +63,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 57fcd362b786b4c1f4312b0eb07da53e34d8bf8c
 ALTER TABLE `reservation`
   ADD CONSTRAINT `fk_reservation_seance` FOREIGN KEY (`ref_seance`) REFERENCES `sceance` (`id_sceance`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_reservation_user` FOREIGN KEY (`ref_user`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE;
