@@ -61,3 +61,6 @@ ALTER TABLE `reservation`
 
 ALTER TABLE `sceance`
     ADD CONSTRAINT `fk_seance_film` FOREIGN KEY (`ref_film`) REFERENCES `film` (`id_film`) ON DELETE CASCADE;
+
+
+ALTER TABLE films ADD COLUMN date_ajout TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
