@@ -1,5 +1,6 @@
 <?php
 
+namespace src\modele;
 class Inscription
 {
     private $nom;
@@ -67,6 +68,7 @@ class Inscription
     {
         $this->nom = $nom;
     }
+
     private $prenom;
 
     private $email;
@@ -80,7 +82,6 @@ class Inscription
         $this->setMdp($mdp);
 
     }
-
 
 
     public function inscrire()

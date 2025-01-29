@@ -1,5 +1,7 @@
 <?php
 
+namespace src\modele;
+
 class Connexion
 {
     private $email;
@@ -62,4 +64,5 @@ class Connexion
         }
     }
 }
+
 ?>

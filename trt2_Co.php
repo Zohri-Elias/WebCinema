@@ -1,5 +1,7 @@
 <?php
 
+use src\modele\Connexion;
+
 require_once 'Connexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<h1>Échec de la connexion</h1>";
         echo "<p>Adresse email ou mot de passe incorrect.</p>";
-        echo '<a href="Connexion.html">Retour au formulaire</a>';
+        echo '<a href="vue/Connexion.html">Retour au formulaire</a>';
     }
 }
 
