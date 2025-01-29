@@ -3,7 +3,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '',
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ]);
 
-// Récupérer les 6 derniers films ajoutés
 $films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -22,7 +21,7 @@ $films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 3")->fet
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="assets/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -187,7 +186,7 @@ $films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 3")->fet
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="assets/js/scripts.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
