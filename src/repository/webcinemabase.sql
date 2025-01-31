@@ -32,15 +32,15 @@ CREATE TABLE IF NOT EXISTS `salle` (
     PRIMARY KEY (`id_salle`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `sceance`;
-CREATE TABLE IF NOT EXISTS `sceance` (
-                                         `id_sceance` int NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `seance`;
+CREATE TABLE IF NOT EXISTS `seance` (
+                                         `id_seance` int NOT NULL AUTO_INCREMENT,
                                          `date` date NOT NULL,
                                          `heure` time NOT NULL,
     `nb_place_res` int NOT NULL,
     `ref_salle` int DEFAULT NULL,
     `ref_film` int DEFAULT NULL,
-    PRIMARY KEY (`id_sceance`),
+    PRIMARY KEY (`id_seance`),
     KEY `fk_seance_film` (`ref_film`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -8,17 +8,17 @@ class SeanceRepository
         $this->bdd = new Bdd();
     }
 
-    public function ajoutSeance(Sceance $sceance)
+    public function ajoutSeance(Sceance $seance)
     {
         $sql = "INSERT INTO Livre(date,heure,nb_place_res,ref_salle,ref_film) 
                 VALUES (:date,:heure,:nb_place_res,:ref_salle,:ref_film)";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'date'  => $sceance->getDate(),
-            'heure' => $sceance->getHeure(),
-            'nb_place_res' => $sceance->getNbPlaceRes(),
-            'ref_salle' => $sceance->getRefSalle(),
-            'ref_film' => $sceance->getRefFilm()
+            'date'  => $seance->getDate(),
+            'heure' => $seance->getHeure(),
+            'nb_place_res' => $seance->getNbPlaceRes(),
+            'ref_salle' => $seance->getRefSalle(),
+            'ref_film' => $seance->getRefFilm()
         ));
 
         if ($res == true) {
@@ -28,22 +28,17 @@ class SeanceRepository
         }
     }
 
-    public function modifSceance(Sceance $sceance)
+    public function modifSeance(Seance $seance)
     {
-        $sql = "UPDATE Sceance SET 
-                   date=:date,
-                   heure=:heure,
-                   nb_place_res=:nb_place_res,
-                   ref_salle=:ref_salle,
-                   ref_film=:ref_film";
+        $sql = "UPDATE Seance SET date=:date,heure=:heure,nb_place_res=:nb_place_res,ref_salle=:ref_salle,ref_film=:ref_film";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'date' => $livre->getTitre(),
-            'heure' => $livre->getHeure(),
-            'email' => $livre->getEmail(),
-            'nb_place_res' => $livre->getNbPlaceRes(),
-            'ref_salle' => $livre->getRefSalle(),
-            'ref_film' => $livre->getRefFilm()
+            'date' => $seance->getTitre(),
+            'heure' => $seance->getHeure(),
+            'email' => $seance->getEmail(),
+            'nb_place_res' => $seance->getNbPlaceRes(),
+            'ref_salle' => $seance->getRefSalle(),
+            'ref_film' => $seance->getRefFilm()
         ));
         if ($res == true) {
             return true;
@@ -54,12 +49,12 @@ class SeanceRepository
     }
 
 
-    public function suppressionSceance(Sceance $sceance)
+    public function suppressionSeance(Sceance $seance)
     {
-        $sql = "DELETE FROM Sceance WHERE idSceance = :idSceance";
+        $sql = "DELETE FROM Seance WHERE idSeance = :idSeance";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'idSceance' => $sceance->getIdSceance()
+            'idSeance' => $seance->getIdSceance()
         ));
         if ($res == true) {
             return true;
