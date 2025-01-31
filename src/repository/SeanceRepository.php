@@ -51,10 +51,10 @@ class SeanceRepository
 
     public function suppressionSeance(Sceance $seance)
     {
-        $sql = "DELETE FROM Seance WHERE idSeance = :idSeance";
+        $sql = "DELETE FROM Seance WHERE id_Seance = :id_Seance";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'idSeance' => $seance->getIdSceance()
+            'id_Seance' => $seance->getId_Sceance()
         ));
         if ($res == true) {
             return true;
