@@ -7,7 +7,7 @@ class FilmRepository
 
     public function __construct()
     {
-        $this->bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '');
+        
     }
 
     public function ajoutFilm(FilmRepository $sceance)
@@ -28,7 +28,7 @@ class FilmRepository
             return false;
         }
     }
-    
+
     public function afficherCatalogue()
     {
         $films=[];
