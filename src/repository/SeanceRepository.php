@@ -8,9 +8,9 @@ class SeanceRepository
         $this->bdd = new Bdd();
     }
 
-    public function ajoutSeance(Sceance $seance)
+    public function ajoutSeance(Seance $seance)
     {
-        $sql = "INSERT INTO Livre(date,heure,nb_place_res,ref_salle,ref_film) 
+        $sql = "INSERT INTO Seance(date,heure,nb_place_res,ref_salle,ref_film) 
                 VALUES (:date,:heure,:nb_place_res,:ref_salle,:ref_film)";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
@@ -35,7 +35,6 @@ class SeanceRepository
         $res = $req->execute(array(
             'date' => $seance->getTitre(),
             'heure' => $seance->getHeure(),
-            'email' => $seance->getEmail(),
             'nb_place_res' => $seance->getNbPlaceRes(),
             'ref_salle' => $seance->getRefSalle(),
             'ref_film' => $seance->getRefFilm()
@@ -51,10 +50,10 @@ class SeanceRepository
 
     public function suppressionSeance(Sceance $seance)
     {
-        $sql = "DELETE FROM Seance WHERE id_Seance = :id_Seance";
+        $sql = "DELETE * FROM Seance WHERE id_Seance = :id_Seance";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'id_Seance' => $seance->getId_Sceance()
+            'id_Seance' => $seance->getId_Seance()
         ));
         if ($res == true) {
             return true;
