@@ -193,5 +193,10 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film DESC LIMIT 3")->fetchA
         <!-- Core theme JS-->
         <script src="assets/js/scripts.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
+        <a href="./vue/Administration.html"><button>Retour à la liste des films</button></a>
+
+
     </body>
 </html>

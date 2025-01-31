@@ -2,7 +2,9 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "cinema";
+$dbname = "webcinema";
+$bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '');
+$req = $bdd->prepare('INSERT INTO film (nom_film, duree, genre, description, image) VALUES(:nom_film, :duree, :genre, :description, :image)');
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -11,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $_POST['film-title'];
+    $nom_film = $_POST['film-title'];
     $description = $_POST['film-description'];
 
     $image = $_FILES['film-image']['name'];
@@ -19,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image_path = "uploads/" . basename($image);
 
     if (move_uploaded_file($image_tmp, $image_path)) {
-        $sql = "INSERT INTO films (title, description, image_url) VALUES ('$title', '$description', '$image_path')";
+        $sql = "INSERT INTO film (nom_film, description, image_url) VALUES ('$nom_film', '$description', '$image_path')";
 
         if ($conn->query($sql) === TRUE) {
             echo "Film ajouté avec succès.";

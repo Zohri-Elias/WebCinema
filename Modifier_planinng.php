@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'activite' => $activite
     ];
 
-    header('Location: index.php');
+    header('Location: Index.php');
     exit;
 }
 ?>

@@ -25,8 +25,8 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow-y: auto; /* Ajoute la possibilité de faire défiler */
-            max-height: 90vh; /* Limite la hauteur du conteneur pour être plus mobile friendly */
+            overflow-y: auto;
+            max-height: 90vh;
         }
 
         h2 {
@@ -37,16 +37,16 @@
 
         .seat-map {
             display: grid;
-            grid-template-columns: repeat(15, 1fr); /* 15 sièges par rangée */
-            grid-gap: 5px; /* Réduit l'espace entre les sièges */
+            grid-template-columns: repeat(15, 1fr);
+            grid-gap: 5px;
             margin-bottom: 30px;
-            overflow-y: auto; /* Permet de faire défiler les sièges verticalement */
-            max-height: 60vh; /* Permet aux sièges de défiler sans dépasser */
+            overflow-y: auto;
+            max-height: 60vh;
         }
 
         .seat {
-            width: 30px; /* Réduit la taille des sièges */
-            height: 30px; /* Réduit la taille des sièges */
+            width: 30px;
+            height: 30px;
             background-color: #3498db;
             border-radius: 5px;
             cursor: pointer;
@@ -54,7 +54,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 0.8rem; /* Taille du texte plus petite */
+            font-size: 0.8rem;
             color: white;
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -109,7 +109,6 @@
             background-color: #1e5798;
         }
 
-        /* Media query pour les petits écrans */
         @media (max-width: 600px) {
             .seat-map {
                 grid-template-columns: repeat(10, 1fr); /* Réduit les colonnes pour les petits écrans */
@@ -128,7 +127,6 @@
     <h2>Réservez vos sièges</h2>
 
     <div class="seat-map" id="seatMap">
-        <!-- Les sièges seront générés ici -->
     </div>
 
     <div id="selectedSeatsContainer">
@@ -151,17 +149,15 @@
         const selectedSeats = [];
         const selectedSeatsList = document.getElementById('selectedSeatsList');
 
-        // Total des sièges : 133 sièges
-        const rows = 9;  // 9 rangées de 15 sièges (pour un total de 135 sièges)
+        const rows = 9;
         const seatsPerRow = 15;
 
-        // Créer les sièges dans le conteneur
         let seatNumber = 1;
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < seatsPerRow; j++) {
                 const seatElement = document.createElement('div');
                 seatElement.classList.add('seat');
-                seatElement.textContent = seatNumber; // Afficher le numéro du siège
+                seatElement.textContent = seatNumber;
                 seatElement.dataset.seat = seatNumber;
                 seatElement.addEventListener('click', seatClickHandler);
                 seatMap.appendChild(seatElement);
@@ -169,13 +165,13 @@
             }
         }
 
-        // Fonction pour gérer le clic sur un siège
+
         function seatClickHandler(event) {
             const seatElement = event.target;
             seatElement.classList.toggle('selected');
             const seatId = seatElement.dataset.seat;
 
-            // Ajouter ou retirer le siège de la liste sélectionnée
+
             if (seatElement.classList.contains('selected')) {
                 selectedSeats.push(seatId);
             } else {
@@ -187,7 +183,7 @@
             updateSelectedSeats();
         }
 
-        // Mettre à jour la liste des sièges sélectionnés
+
         function updateSelectedSeats() {
             selectedSeatsList.innerHTML = '';
             selectedSeats.forEach(seat => {
@@ -197,15 +193,15 @@
             });
         }
 
-        // Gérer la soumission du formulaire
+
         const reservationForm = document.getElementById('reservationForm');
         reservationForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            // Simuler l'envoi des données
+
             alert(`Réservation réussie pour les sièges : ${selectedSeats.join(', ')}`);
 
-            // Réinitialiser la sélection
+
             selectedSeats.length = 0;
             updateSelectedSeats();
 
@@ -227,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $seats = $_POST['seats']; // Les sièges sélectionnés
+    $seats = $_POST['seats'];
 
     $req = $bdd->prepare("INSERT INTO reservations (name, email, seats) VALUES (:name, :email, :seats)");
     $req->execute(array(
