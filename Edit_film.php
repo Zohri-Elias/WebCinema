@@ -1,4 +1,8 @@
 <?php
+$bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '');
+
+$req = $bdd->prepare('UPDATE sceance SET (date, heure, film) VALUES(:date, :heure, :film)');
+
 $servername = "localhost";
 $username = "root";
 $password = "";
