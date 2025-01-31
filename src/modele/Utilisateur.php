@@ -1,9 +1,61 @@
 <?php
 
-namespace src\modele\;
+namespace src\modele;
 
-class Utilisateur{
- private $nom;
+class Utilisateur
+{
+    private $idUtilisateur;
+    private $nom;
+    private $prenom;
+    private $email;
+    private $mdp;
+    private $role;
+
+    public function __construct(array $donnees)
+    {
+        $this->hydrate($donnees);
+    }
+    public function hydrate(array $donnees) {
+        foreach ($donnees as $key => $value) {
+            $method = 'set'.ucfirst($key);
+
+            if (method_exists($this, $method)) {
+                // On appelle le setter
+                $this->$method($value);
+            }
+        }
+    }
+    /**
+     * @return mixed
+     */
+    public function getIdUtilisateur()
+    {
+        return $this->idUtilisateur;
+    }
+
+    /**
+     * @param mixed $idUtilisateur
+     */
+    public function setIdUtilisateur($idUtilisateur)
+    {
+        $this->idUtilisateur = $idUtilisateur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
 
     /**
      * @return mixed
@@ -19,22 +71,6 @@ class Utilisateur{
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
     }
 
     /**
@@ -56,20 +92,33 @@ class Utilisateur{
     /**
      * @return mixed
      */
-    public function getNom()
+    public function getMdp()
     {
-        return $this->nom;
+        return $this->mdp;
     }
 
     /**
-     * @param mixed $nom
+     * @param mixed $mdp
      */
-    public function setNom($nom)
+    public function setMdp($mdp)
     {
-        $this->nom = $nom;
+        $this->mdp = $mdp;
     }
- private $prenom;
- private $email;
- private $password;
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
 
 }
