@@ -2,7 +2,7 @@
 
 use src\modele\Connexion;
 
-require_once 'Connexion.php';
+require_once __DIR__ . '/src/modele/Connexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];

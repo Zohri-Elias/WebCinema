@@ -1,14 +1,13 @@
 <?php
 $bdd = new PDO(
     'mysql:host=localhost;
-        port=3307;
         dbname=webcinema;
         charset=utf8',
     'root',
     ''
 );
-
-$films = $bdd->query("SELECT * FROM film ORDER BY date_ajout")->fetchAll(PDO::FETCH_ASSOC);
+// port=3307;
+$films = $bdd->query("SELECT * FROM film ORDER BY id_film")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
