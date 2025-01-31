@@ -1,4 +1,5 @@
 <?php
+require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/Film.php";
 require_once "../src/repository/FilmRepository.php";
 $filmRepository = new FilmRepository();
@@ -31,8 +32,12 @@ $films = $filmRepository->afficherCatalogue();
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="Index.php">Home</a></li>
 =======
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.php">Home</a></li>
+<<<<<<< HEAD
 >>>>>>> 3f92270365e90ea35c189a5d5aa4d4fc1aaac589:vue/Catalogue.php
                         <li class="nav-item"><a class="nav-link" href="#voir">A voir</a></li>
+=======
+                        <li class="nav-item"><a class="nav-link" href="#affiche">A voir</a></li>
+>>>>>>> 0109e40bdc20fcec241f0cec61b5dad3645eabf7
                         <li class="nav-item"><a class="nav-link" href="#profile.html">Profile</a></li>
                     </ul>
                     <form class="d-flex">

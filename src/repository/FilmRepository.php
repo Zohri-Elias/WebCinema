@@ -1,6 +1,7 @@
 <?php
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 namespace src\repository;
 =======
 use src\modele\Film;
@@ -8,6 +9,8 @@ use src\modele\Film;
 require_once $_SERVER['DOCUMENT_ROOT'] . "/exo/WebCinema/src/bdd/Bdd.php";
 >>>>>>> 3f92270365e90ea35c189a5d5aa4d4fc1aaac589
 
+=======
+>>>>>>> 0109e40bdc20fcec241f0cec61b5dad3645eabf7
 class FilmRepository
 {
 

@@ -33,15 +33,17 @@ class SeanceRepository
         $sql = "UPDATE Sceance SET 
                    date=:date,
                    heure=:heure,
-                   email=:email,
                    nb_place_res=:nb_place_res,
                    ref_salle=:ref_salle,
                    ref_film=:ref_film";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
             'date' => $livre->getTitre(),
-            'annee' => $livre->getAnnee(),
-            'resume' => $livre->getResume(),
+            'heure' => $livre->getHeure(),
+            'email' => $livre->getEmail(),
+            'nb_place_res' => $livre->getNbPlaceRes(),
+            'ref_salle' => $livre->getRefSalle(),
+            'ref_film' => $livre->getRefFilm()
         ));
         if ($res == true) {
             return true;
