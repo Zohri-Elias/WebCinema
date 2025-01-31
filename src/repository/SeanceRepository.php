@@ -10,13 +10,13 @@ class SeanceRepository
 
     public function ajoutSeance(Sceance $sceance)
     {
-        $sql = "INSERT INTO Livre(date,heure,email,nb_place_res,ref_salle,ref_film) 
-                VALUES (:date,:heure,:email,:nb_place_res,:ref_salle,:ref_film)";
+        $sql = "INSERT INTO Livre(date,heure,nb_place_res,ref_salle,ref_film) 
+                VALUES (:date,:heure,:nb_place_res,:ref_salle,:ref_film)";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'date' => $sceance->getDate(),
+            'date'  => $sceance->getDate(),
             'heure' => $sceance->getHeure(),
-            'email' => $sceance->getEmail(),
+            'nb_place_res' => $sceance->getNbPlaceRes(),
             'ref_salle' => $sceance->getRefSalle(),
             'ref_film' => $sceance->getRefFilm()
         ));
@@ -30,13 +30,20 @@ class SeanceRepository
 
     public function modifSceance(Sceance $sceance)
     {
-        $sql = "INSERT INTO Livre(titre,annee,resume) 
-                VALUES (:titre,:annee,:resume)";
+        $sql = "UPDATE Sceance SET 
+                   date=:date,
+                   heure=:heure,
+                   nb_place_res=:nb_place_res,
+                   ref_salle=:ref_salle,
+                   ref_film=:ref_film";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'titre' => $livre->getTitre(),
-            'annee' => $livre->getAnnee(),
-            'resume' => $livre->getResume(),
+            'date' => $livre->getTitre(),
+            'heure' => $livre->getHeure(),
+            'email' => $livre->getEmail(),
+            'nb_place_res' => $livre->getNbPlaceRes(),
+            'ref_salle' => $livre->getRefSalle(),
+            'ref_film' => $livre->getRefFilm()
         ));
         if ($res == true) {
             return true;

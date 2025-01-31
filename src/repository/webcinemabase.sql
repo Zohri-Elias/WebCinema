@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS `sceance` (
                                          `id_sceance` int NOT NULL AUTO_INCREMENT,
                                          `date` date NOT NULL,
                                          `heure` time NOT NULL,
-                                         `email` varchar(50) NOT NULL,
     `nb_place_res` int NOT NULL,
     `ref_salle` int DEFAULT NULL,
     `ref_film` int DEFAULT NULL,
