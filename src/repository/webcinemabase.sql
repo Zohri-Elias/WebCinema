@@ -72,3 +72,5 @@ INSERT INTO film VALUES (2,"Mufasa : Le Roi Lion",'1h 58min',"Aventure",'Rafiki 
 ',"https://fr.web.img6.acsta.net/c_310_420/img/f5/f2/f5f2447c4246e42eb3e69040605d7cf1.jpg",null)
 
 INSERT INTO film VALUES (3,"L'Criminal Squad : Pantera",'2h 10min',"Action","La suite des aventures de 'Big Nic' O'Brien qui traque les méchants dans les rues d'Europe et se rapproche de la capture de Donnie. Pendant ce temps, ce dernier s'est laissé entraîner dans le monde dangereux des voleurs de diamants et de la mafia des Panthères.","https://fr.web.img4.acsta.net/c_310_420/img/c6/7d/c67d718699bb1158eace4179794b6861.jpg",null)
+
+INSERT INTO film VALUES (4,"Un ours dans le jura",'1h 53min',"Comédie","Michel et Cathy, un couple usé par le temps et les difficultés financières, ne se parle plus vraiment. Jusqu’au jour où Michel, pour éviter un ours sur la route, heurte une voiture et tue les deux occupants. 2 morts et 2 millions en billets usagés dans le coffre, forcément, ça donne envie de se reparler. Et surtout de se taire.","https://fr.web.img5.acsta.net/c_310_420/img/17/5f/175fbcee8f625ac212b06378b2d34435.jpg",null)
