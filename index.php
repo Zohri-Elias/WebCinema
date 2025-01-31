@@ -1,7 +1,12 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '', [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-]);
+$bdd = new PDO(
+        'mysql:host=localhost;
+        port=3307;
+        dbname=webcinema;
+        charset=utf8',
+        'root',
+        ''
+);
 
 $films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -116,6 +121,7 @@ $films = $bdd->query("SELECT * FROM film ORDER BY date_ajout DESC LIMIT 3")->fet
                 </div>
             </div>
         </section>
+        <!-- A L'Affiche-->
         <section class="py-1" id="affiche">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-3 gx-lg-4 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
