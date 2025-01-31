@@ -41,7 +41,7 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film DESC LIMIT 3")->fetchA
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                         <li class="nav-item"><a class="nav-link" href="#affiche">A l'Affiche</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/vue/Catalogue.php">Catalogue</a></li>
+                        <li class="nav-item"><a class="nav-link" href="vue/Catalogue.php">Catalogue</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rejoint Nous</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
