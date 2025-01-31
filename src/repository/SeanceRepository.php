@@ -8,7 +8,8 @@ class SeanceRepository
         $this->bdd = new Bdd();
     }
 
-    public function ajoutSeance(Sceance $sceance){
+    public function ajoutSeance(Sceance $sceance)
+    {
         $sql = "INSERT INTO Livre(date,heure,email,nb_place_res,ref_salle,ref_film) 
                 VALUES (:date,:heure,:email,:nb_place_res,:ref_salle,:ref_film)";
         $req = $this->bdd->getBdd()->prepare($sql);
@@ -17,16 +18,18 @@ class SeanceRepository
             'heure' => $sceance->getHeure(),
             'email' => $sceance->getEmail(),
             'ref_salle' => $sceance->getRefSalle(),
-
+            'ref_film' => $sceance->getRefFilm()
         ));
-        if($res == true){
+
+        if ($res == true) {
             return true;
-        }else{
+        } else {
             return false;
         }
-
     }
-    public function modifLivre(Livre $livre){
+
+    public function modifSceance(Sceance $sceance)
+    {
         $sql = "INSERT INTO Livre(titre,annee,resume) 
                 VALUES (:titre,:annee,:resume)";
         $req = $this->bdd->getBdd()->prepare($sql);
@@ -35,11 +38,26 @@ class SeanceRepository
             'annee' => $livre->getAnnee(),
             'resume' => $livre->getResume(),
         ));
-        if($res == true){
+        if ($res == true) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
+    }
+
+
+    public function suppressionSceance(Sceance $sceance)
+    {
+        $sql = "DELETE FROM Sceance WHERE idSceance = :idSceance";
+        $req = $this->bdd->getBdd()->prepare($sql);
+        $res = $req->execute(array(
+            'idSceance' => $sceance->getIdSceance()
+        ));
+        if ($res == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
