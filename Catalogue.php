@@ -7,7 +7,7 @@ $bdd = new PDO(
     ''
 );
 // port=3307;
-$films = $bdd->query("SELECT * FROM film ORDER BY date_ajout")->fetchAll(PDO::FETCH_ASSOC);
+$films = $bdd->query("SELECT * FROM film ORDER BY id_film")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
