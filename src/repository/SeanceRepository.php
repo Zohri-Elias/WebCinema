@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__.'/Repository.php';
 class SeanceRepository
 {
     private $bdd;
