@@ -1,9 +1,5 @@
 <?php
 
-use src\modele\Film;
-
-require_once $_SERVER['DOCUMENT_ROOT'] . "/exo/WebCinema/src/bdd/Bdd.php";
-
 class FilmRepository
 {
 

@@ -1,4 +1,5 @@
 <?php
+require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/Film.php";
 require_once "../src/repository/FilmRepository.php";
 $filmRepository = new FilmRepository();
@@ -28,7 +29,7 @@ $films = $filmRepository->afficherCatalogue();
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#voir">A voir</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#affiche">A voir</a></li>
                         <li class="nav-item"><a class="nav-link" href="#profile.html">Profile</a></li>
                     </ul>
                     <form class="d-flex">

@@ -1,7 +1,5 @@
 <?php
 
-namespace src\modele;
-
 class Film
 {
     private $idFilm;
