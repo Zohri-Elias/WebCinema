@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__.'/Repository.php';
 class SeanceRepository
 {
     private $bdd;
@@ -10,8 +11,7 @@ class SeanceRepository
 
     public function ajoutSeance(Seance $seance)
     {
-        $sql = "INSERT INTO Seance(date,heure,nb_place_res,ref_salle,ref_film) 
-                VALUES (:date,:heure,:nb_place_res,:ref_salle,:ref_film)";
+        $sql = "INSERT INTO Seance(date,heure,nb_place_res,ref_salle,ref_film) VALUES (:date,:heure,:nb_place_res,:ref_salle,:ref_film)";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
             'date'  => $seance->getDate(),
@@ -53,7 +53,7 @@ class SeanceRepository
         $sql = "DELETE * FROM Seance WHERE id_Seance = :id_Seance";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'id_Seance' => $seance->getId_Seance()
+            'id_seance' => $seance->getId_seance()
         ));
         if ($res == true) {
             return true;
