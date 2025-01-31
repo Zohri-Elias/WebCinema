@@ -1,23 +1,32 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
+$bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '');
+
+$req = $bdd->prepare('INSERT INTO sceance (date, heure, film) VALUES(:date, :heure, :film)');
 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['jour'], $_POST['heure'], $_POST['activite'])) {
-        $jour = htmlspecialchars($_POST['jour']);
+    if (isset($_POST['date'], $_POST['heure'], $_POST['film'])) {
+        // Sécurisation des données
+        $date = htmlspecialchars($_POST['date']);
         $heure = htmlspecialchars($_POST['heure']);
-        $activite = htmlspecialchars($_POST['activite']);
+        $film = htmlspecialchars($_POST['film']);
 
+        // Ajout dans la session
         if (!isset($_SESSION['planning'])) {
             $_SESSION['planning'] = [];
         }
 
         $_SESSION['planning'][] = [
-            'jour' => $jour,
+            'date' => $date,
             'heure' => $heure,
-            'activite' => $activite
+            'film' => $film
         ];
+
+        $req->bindParam(':date', $date);
+        $req->bindParam(':heure', $heure);
+        $req->bindParam(':film', $film);
+        $req->execute();
     }
 }
 
