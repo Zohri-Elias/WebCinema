@@ -1,15 +1,9 @@
 <?php
-$bdd = new PDO(
-    'mysql:host=localhost;
-        dbname=webcinema;
-        charset=utf8',
-    'root',
-    ''
-);
-// port=3307;
-$films = $bdd->query("SELECT * FROM film ORDER BY id_film")->fetchAll(PDO::FETCH_ASSOC);
+require_once "../src/modele/Film.php";
+require_once "../src/repository/FilmRepository.php";
+$filmRepository = new FilmRepository();
+$films = $filmRepository->afficherCatalogue();
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -19,11 +13,11 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film")->fetchAll(PDO::FETCH
         <meta name="author" content="" />
         <title>Movie Room</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="assets/css/styles2.css" rel="stylesheet" />
+        <link href="../assets/css/styles2.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
@@ -33,7 +27,11 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film")->fetchAll(PDO::FETCH
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+<<<<<<< HEAD:Catalogue.php
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="Index.php">Home</a></li>
+=======
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.php">Home</a></li>
+>>>>>>> 3f92270365e90ea35c189a5d5aa4d4fc1aaac589:vue/Catalogue.php
                         <li class="nav-item"><a class="nav-link" href="#voir">A voir</a></li>
                         <li class="nav-item"><a class="nav-link" href="#profile.html">Profile</a></li>
                     </ul>
@@ -64,21 +62,21 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film")->fetchAll(PDO::FETCH
                         <div class="col mb-5">
                             <div class="card h-100">
                                 <!-- Image du film -->
-                                <img class="card-img-top" src="<?= htmlspecialchars($film['image']) ?>" alt="<?= htmlspecialchars($film['nom_film']) ?>" />
+                                <img class="card-img-top" src="<?= $film->getImage() ?>" alt="<?= $film->getNomFilm() ?>" />
                                 <!-- Détails du film -->
                                 <div class="card-body p-4">
                                     <div class="text-center">
-                                        <h5 class="fw-bolder"><?= htmlspecialchars($film['nom_film']) ?></h5>
+                                        <h5 class="fw-bolder"><?= $film->getNomFilm() ?></h5>
                                         <div class="text-center">
-                                            <?= htmlspecialchars($film['genre']) ?>
+                                            <?= $film->getGenre() ?>
                                         </div>
                                         <div class="text-center p-1">
-                                            <?= htmlspecialchars($film['duree']) ?>
+                                            <?= $film->getDuree() ?>
                                         </div>
                                     </div>
                                     <div class="card-bodyp p-0">
                                         <div class="text-center">
-                                            <?= htmlspecialchars($film['description']) ?>
+                                            <?= $film->getDescription() ?>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +93,7 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film")->fetchAll(PDO::FETCH
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="assets/js/scripts2.js"></script>
+        <script src="../assets/js/scripts2.js"></script>
     </body>
 </html>
 

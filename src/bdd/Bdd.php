@@ -1,17 +1,15 @@
 <?php
-class Bdd
-{
-    private $nomBDD = 'webcinema';
-    private $serveur = 'localhost';
-    private $user= 'root';
-    private $password = '';
+class Bdd {
     private $bdd;
-    public function __construct()
-    {
-        $this->bdd = new PDO("mysql:dbname=".$this->nomBDD.";host=".$this->serveur, $this->user, $this->password);
+
+    public function __construct($host = 'localhost', $dbname = 'webcinema', $username = 'root', $password = '') {
+
+        $this->bdd = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $this->bdd->exec("set names utf8");
     }
 
-    public function getBdd(){
+    public function getbdd() {
         return $this->bdd;
     }
 }
+?>

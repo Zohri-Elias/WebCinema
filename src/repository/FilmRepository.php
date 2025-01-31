@@ -1,10 +1,17 @@
 <?php
 
+<<<<<<< HEAD
 namespace src\repository;
+=======
+use src\modele\Film;
+
+require_once $_SERVER['DOCUMENT_ROOT'] . "/exo/WebCinema/src/bdd/Bdd.php";
+>>>>>>> 3f92270365e90ea35c189a5d5aa4d4fc1aaac589
 
 class FilmRepository
 {
 
+<<<<<<< HEAD
 
     private $bdd;
 
@@ -65,3 +72,27 @@ class FilmRepository
         }
     }
 }
+=======
+    public function afficherCatalogue()
+    {
+        $films=[];
+        $bdd = new Bdd();
+        $connexion = $bdd->getbdd();
+        $filmsBdd = $connexion->query("SELECT * FROM film ORDER BY id_film")->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($filmsBdd as $film) {
+            $films[]= new Film([
+                "idFilm"=>$film['id_film'],
+                "nomFilm"=>$film['nom_film'],
+                "duree"=>$film['duree'],
+                "genre"=>$film['genre'],
+                "description"=>$film['description'],
+                "image"=>$film['image'],
+
+            ]);
+        }
+        return $films;
+    }
+}
+// port=3307;
+?>
+>>>>>>> 3f92270365e90ea35c189a5d5aa4d4fc1aaac589
