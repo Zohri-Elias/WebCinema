@@ -1,7 +1,5 @@
 <?php
 
-use src\modele\Connexion;
-
 require_once __DIR__ . '/src/modele/Connexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

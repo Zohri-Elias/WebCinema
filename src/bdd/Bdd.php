@@ -12,4 +12,5 @@ class Bdd {
         return $this->bdd;
     }
 }
+//port=3307;
 ?>

@@ -12,8 +12,7 @@ class FilmRepository
 
     public function ajoutFilm(FilmRepository $sceance)
     {
-        $sql = "INSERT INTO film (nom_film,duree,genre,description) 
-                VALUES (:nom_film,:duree,:genre,:description)";
+        $sql = "INSERT INTO film (nom_film,duree,genre,description) VALUES (:nom_film,:duree,:genre,:description)";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
             'nom_film' => $sceance->getNom_film(),
