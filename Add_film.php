@@ -1,5 +1,4 @@
 <?php
-
 $bdd = new PDO('mysql:host=localhost;dbname=webcinema;charset=utf8', 'root', '');
 
 $req = $bdd->prepare('INSERT INTO film (nom_film, duree, genre, description, image) VALUES(:nom_film, :duree, :genre, :description, :image)');

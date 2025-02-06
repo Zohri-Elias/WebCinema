@@ -2,12 +2,11 @@
 
 class FilmRepository
 {
-
     private $bdd;
-
+    private $film;
     public function __construct()
     {
-
+    $this->bdd = new PDO('mysql:host=localhost;dbname=films', 'root', '');
     }
 
     public function ajoutFilm(FilmRepository $sceance)
