@@ -4,7 +4,7 @@ class Bdd {
 
     public function __construct($host = 'localhost', $dbname = 'webcinema', $username = 'root', $password = '') {
 
-        $this->bdd = new PDO("mysql:host=$host;dbname=$dbname; port=3307;", $username, $password);
+        $this->bdd = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
         $this->bdd->exec("set names utf8");
     }
 
@@ -12,4 +12,5 @@ class Bdd {
         return $this->bdd;
     }
 }
+//port=3307;
 ?>
