@@ -17,7 +17,8 @@ class FilmRepository
             'nom_film' => $sceance->getNom_film(),
             'duree' => $sceance->getDuree(),
             'genre' => $sceance->getGenre(),
-            'description' => $sceance->getDescription()
+            'description' => $sceance->getDescription(),
+            'image' => $sceance->getImage()
         ));
 
         if ($res == true) {

@@ -18,16 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
     } else {
-        $sql = "SELECT image_url FROM films WHERE id = ?";
+        $sql = "SELECT image FROM films WHERE id = ?";
         $stmt = $bdd->prepare($sql);
         $stmt->execute([$film_id]);
         $film = $stmt->fetch();
-        $image_url = $film['image_url'];
+        $image = $film['image_url'];
     }
 
-    $sql = "UPDATE films SET title = ?, description = ?, image_url = ? WHERE id = ?";
+    $sql = "UPDATE films SET nom_film = :nom_film, description = :description, image = :image WHERE id = ?";
     $stmt = $bdd->prepare($sql);
-    $stmt->execute([$title, $description, $image_url, $film_id]);
+    $stmt->execute([$nom_film, $description, $image, $film_id]);
 
     if ($stmt->rowCount() > 0) {
         echo "Film mis à jour avec succès.";
