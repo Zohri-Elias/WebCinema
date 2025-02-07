@@ -1,6 +1,6 @@
 <?php
-require_once '../../src/bdd/Bdd.php';
-require_once '../../src/repository/UtilisateurRepository.php';
+require_once 'Bdd.php';
+require_once 'Utilisateur.php';
 
 class UtilisateurRepository {
     private $bdd;
@@ -10,7 +10,7 @@ class UtilisateurRepository {
     }
 
     public function inscription(Utilisateur $utilisateur) {
-        $query = "INSERT INTO utilisateur (nom, prenom, email, mdp, role) VALUES (:nom, :prenom, :email, :mdp, :role)";
+        $query = "INSERT INTO utilisateurs (nom, prenom, email, mdp, role) VALUES (:nom, :prenom, :email, :mdp, :role)";
         $stmt = $this->bdd->prepare($query);
         $stmt->bindValue(':nom', $utilisateur->getNom());
         $stmt->bindValue(':prenom', $utilisateur->getPrenom());
@@ -21,7 +21,7 @@ class UtilisateurRepository {
     }
 
     public function connexion($email, $mdp) {
-        $query = "SELECT * FROM utilisateur WHERE email = :email";
+        $query = "SELECT * FROM utilisateurs WHERE email = :email";
         $stmt = $this->bdd->prepare($query);
         $stmt->bindValue(':email', $email);
         $stmt->execute();

@@ -2,26 +2,33 @@
 require_once '../../src/bdd/Bdd.php';
 require_once '../../src/repository/UtilisateurRepository.php';
 
-session_start();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nom = $_POST['nom'] ?? '';
+    $prenom = $_POST['prenom'] ?? '';
     $email = $_POST['email'] ?? '';
     $mdp = $_POST['mdp'] ?? '';
+    $role = $_POST['role'] ?? 'utilisateur';
 
-    $bdd = new Bdd();
-    $utilisateurRepository = new UtilisateurRepository($bdd);
-    $utilisateur = $utilisateurRepository->connexion($email, $mdp);
+    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($mdp)) {
+        $utilisateur = new Utilisateur([
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'mdp' => $mdp,
+            'role' => $role
+        ]);
 
-    if ($utilisateur) {
-        $_SESSION['user'] = [
-            'nom' => $utilisateur->getNom(),
-            'prenom' => $utilisateur->getPrenom(),
-            'email' => $utilisateur->getEmail(),
-            'role' => $utilisateur->getRole()
-        ];
-        header('Location: accueil.php');
+        $bdd = new Bdd();
+        $utilisateurRepository = new UtilisateurRepository($bdd);
+
+        if ($utilisateurRepository->inscription($utilisateur)) {
+            echo 'Inscription réussie !';
+            header('Location: connexion.php');
+        } else {
+            echo 'Erreur lors de l\'inscription';
+        }
     } else {
-        echo 'Identifiants incorrects.';
+        echo 'Veuillez remplir tous les champs.';
     }
 }
 ?>
