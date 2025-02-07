@@ -1,24 +1,29 @@
 <?php
-class UtilisateurRepository
-{
-    public function inscription($connection)
-    {
-        $req = $connection->prepare('INSERT INTO utilisateur (nom, prenom, email, mdp) VALUES (:nom, :prenom, :email, :mdp)');
-        $req->execute([
-            'nom' => $this->nom,
-            'prenom' => $this->prenom,
-            'email' => $this->email,
-            'mdp' => $this->mdp,
-        ]);
-    }
+class UtilisateurRepository {
+private $bdd;
 
-    public function connexion($connection)
-    {
-        $req = $connection->prepare('SELECT * FROM utilisateur WHERE email = :email');
-        $req->execute(['email' => $this->getEmail(), 'mdp' => $this->getMdp()]);
-
-        $result = $req->fetch();
-        return $result !== false;
-    }
+public function __construct(Bdd $bdd) {
+$this->bdd = $bdd->getbdd();
 }
-?>
+
+public function Inscription(Utilisateur $user) {
+$req = $this->bdd->prepare("INSERT INTO utilisateur (nom, prenom, email, mdp) VALUES (:nom, :prenom, :email, :mdp)");
+return $req->execute([
+'nom' => $user->getNom(),
+'prenom' => $user->getPrenom(),
+'email' => $user->getEmail(),
+'mdp' => password_hash($user->getMdp(), PASSWORD_BCRYPT)
+]);
+}
+
+public function connexion($email, $mdp) {
+$req = $this->bdd->prepare("SELECT * FROM utilisateur WHERE email = :email");
+$req->execute(['email' => $email]);
+$user = $req->fetch(PDO::FETCH_ASSOC);
+
+if ($user && password_verify($mdp, $user['mdp'])) {
+return new Utilisateur($user['nom'], $user['prenom'], $user['email'], $user['mdp'], $user['id']);
+}
+return null;
+}
+}

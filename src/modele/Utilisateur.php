@@ -2,6 +2,54 @@
 class Utilisateur
 {
     private $idUtilisateur;
+
+    /**
+     * @return mixed
+     */
+    public function getIdUtilisateur()
+    {
+        return $this->idUtilisateur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMdp()
+    {
+        return $this->mdp;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
     private $nom;
     private $prenom;
     private $email;
@@ -19,12 +67,11 @@ class Utilisateur
             $method = 'set' . ucfirst($key);
 
             if (method_exists($this, $method)) {
-                // On appelle le setter
                 $this->$method($value);
             }
         }
     }
-    $utilisateur = new Utilisateur(
+
 }
 
 
