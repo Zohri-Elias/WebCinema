@@ -1,29 +1,38 @@
 <?php
+require_once '../../src/bdd/Bdd.php';
+require_once '../../src/repository/UtilisateurRepository.php';
+
 class UtilisateurRepository {
-private $bdd;
+    private $bdd;
 
-public function __construct(Bdd $bdd) {
-$this->bdd = $bdd->getbdd();
-}
+    public function __construct(Bdd $bdd) {
+        $this->bdd = $bdd->getbdd();
+    }
 
-public function Inscription(Utilisateur $user) {
-$req = $this->bdd->prepare("INSERT INTO utilisateur (nom, prenom, email, mdp) VALUES (:nom, :prenom, :email, :mdp)");
-return $req->execute([
-'nom' => $user->getNom(),
-'prenom' => $user->getPrenom(),
-'email' => $user->getEmail(),
-'mdp' => password_hash($user->getMdp(), PASSWORD_BCRYPT)
-]);
-}
+    public function inscription(Utilisateur $utilisateur) {
+        $query = "INSERT INTO utilisateur (nom, prenom, email, mdp, role) VALUES (:nom, :prenom, :email, :mdp, :role)";
+        $stmt = $this->bdd->prepare($query);
+        $stmt->bindValue(':nom', $utilisateur->getNom());
+        $stmt->bindValue(':prenom', $utilisateur->getPrenom());
+        $stmt->bindValue(':email', $utilisateur->getEmail());
+        $stmt->bindValue(':mdp', $utilisateur->getMdp());
+        $stmt->bindValue(':role', $utilisateur->getRole());
+        return $stmt->execute();
+    }
 
-public function connexion($email, $mdp) {
-$req = $this->bdd->prepare("SELECT * FROM utilisateur WHERE email = :email");
-$req->execute(['email' => $email]);
-$user = $req->fetch(PDO::FETCH_ASSOC);
+    public function connexion($email, $mdp) {
+        $query = "SELECT * FROM utilisateur WHERE email = :email";
+        $stmt = $this->bdd->prepare($query);
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($user && password_verify($mdp, $user['mdp'])) {
-return new Utilisateur($user['nom'], $user['prenom'], $user['email'], $user['mdp'], $user['id']);
+        if ($userData && password_verify($mdp, $userData['mdp'])) {
+            $utilisateur = new Utilisateur($userData);
+            return $utilisateur;
+        } else {
+            return null;
+        }
+    }
 }
-return null;
-}
-}
+?>
