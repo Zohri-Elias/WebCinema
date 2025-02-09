@@ -6,7 +6,7 @@ class FilmRepository
     private $film;
     public function __construct()
     {
-    $this->bdd = new PDO('mysql:host=localhost;dbname=films', 'root', '');
+    $this->bdd = new PDO('mysql:host=localhost;port=3307;dbname=webcinema', 'root', '');
     }
 
     public function ajoutFilm(FilmRepository $sceance)

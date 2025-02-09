@@ -1,7 +1,6 @@
 <?php
-require_once 'Bdd.php';
-require_once 'Utilisateur.php';
-
+require_once '../bdd/Bdd.php';
+require_once '../modele/Utilisateur.php';
 class UtilisateurRepository {
     private $bdd;
 
