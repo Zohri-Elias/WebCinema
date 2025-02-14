@@ -1,37 +1,23 @@
 <?php
-require_once '../bdd/Bdd.php';
-require_once '../modele/Utilisateur.php';
-class UtilisateurRepository {
+class utilisateurRepository {
     private $bdd;
 
-    public function __construct(Bdd $bdd) {
-        $this->bdd = $bdd->getbdd();
+    public function __construct() {
+        $this->bdd = new Bdd();
     }
 
-    public function inscription(Utilisateur $utilisateur) {
-        $query = "INSERT INTO utilisateurs (nom, prenom, email, mdp, role) VALUES (:nom, :prenom, :email, :mdp, :role)";
-        $stmt = $this->bdd->prepare($query);
-        $stmt->bindValue(':nom', $utilisateur->getNom());
-        $stmt->bindValue(':prenom', $utilisateur->getPrenom());
-        $stmt->bindValue(':email', $utilisateur->getEmail());
-        $stmt->bindValue(':mdp', $utilisateur->getMdp());
-        $stmt->bindValue(':role', $utilisateur->getRole());
-        return $stmt->execute();
+    public function inscription(Utilisateur $utilisateur)
+    {
+        $req = $this->bdd->getBdd()->prepare('INSERT INTO utilisateur (prenom, nom,  email, mdp) VALUES (:prenom, :nom,  :email, :mdp)');
+        $success = $req->execute([
+    "nom" => $utilisateur->getNom(),
+    "prenom" => $utilisateur->getPrenom(),
+    "email" => $utilisateur->getEmail(),
+    "mdp" => $utilisateur->getMdp()]);
+
+        return $success;
     }
 
-    public function connexion($email, $mdp) {
-        $query = "SELECT * FROM utilisateurs WHERE email = :email";
-        $stmt = $this->bdd->prepare($query);
-        $stmt->bindValue(':email', $email);
-        $stmt->execute();
-        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($userData && password_verify($mdp, $userData['mdp'])) {
-            $utilisateur = new Utilisateur($userData);
-            return $utilisateur;
-        } else {
-            return null;
-        }
-    }
 }
 ?>
