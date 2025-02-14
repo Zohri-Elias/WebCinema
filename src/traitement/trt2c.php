@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mdp = $_POST['mdp'] ?? '';
 
     $bdd = new Bdd();
-    $utilisateurRepository = new UtilisateurRepository($bdd);
+    $utilisateurRepository = new utilisateurRepository($bdd);
     $utilisateur = $utilisateurRepository->connexion($email, $mdp);
 
     if ($utilisateur) {
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'email' => $utilisateur->getEmail(),
             'role' => $utilisateur->getRole()
         ];
-        header('Location: accueil.php'); // Page de redirection après connexion
+        header('Location: Index.php'); // Page de redirection après connexion
     } else {
         echo 'Identifiants incorrects.';
     }
