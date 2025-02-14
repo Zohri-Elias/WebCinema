@@ -1,7 +1,7 @@
 <?php
 $bdd = new PDO(
         'mysql:host=localhost;
-        port=3307;
+        
         dbname=webcinema;
         charset=utf8',
         'root',
