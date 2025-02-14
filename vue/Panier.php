@@ -30,55 +30,50 @@ $films = $filmRepository->afficherCatalogue();
         </thead>
         <tbody>
         <?php
-        session_start();
+        // Vérifie si le panier existe
+        if (!isset($_SESSION['panier'])) {
+            $_SESSION['panier'] = [];
+        }
 
-        class Panier {
-            // Ajouter un film au panier
-            public function ajouterFilm($id, $nom, $image) {
-                // Vérifier si le panier existe
-                if (!isset($_SESSION['panier'])) {
-                    $_SESSION['panier'] = [];
+        // Ajout d'un film au panier
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ajouter_panier'])) {
+            $id_film = $_POST['id_film'];
+            $film_nom = $_POST['film_nom'];
+            $film_image = $_POST['film_image'];
+
+            // Vérifier si le film est déjà dans le panier
+            $dejaDansPanier = false;
+            foreach ($_SESSION['panier'] as $film) {
+                if ($film["id"] == $id_film) {
+                    $dejaDansPanier = true;
+                    break;
                 }
+            }
 
-                // Vérifier si le film est déjà dans le panier
-                foreach ($_SESSION['panier'] as $film) {
-                    if ($film['id'] == $id) {
-                        return false; // Film déjà dans le panier
-                    }
-                }
-
-                // Ajouter le film au panier
+            if (!$dejaDansPanier) {
                 $_SESSION['panier'][] = [
-                    'id' => $id,
-                    'nom' => $nom,
-                    'image' => $image
+                    "id" => $id_film,
+                    "nom" => $film_nom,
+                    "image" => $film_image
                 ];
-
-                return true;
-            }
-
-            // Supprimer un film du panier
-            public function supprimerFilm($id) {
-                if (isset($_SESSION['panier'])) {
-                    foreach ($_SESSION['panier'] as $index => $film) {
-                        if ($film['id'] == $id) {
-                            unset($_SESSION['panier'][$index]);
-                            $_SESSION['panier'] = array_values($_SESSION['panier']); // Réindexer le tableau
-                            return true;
-                        }
-                    }
-                }
-
-                return false;
-            }
-
-            // Récupérer tous les films du panier
-            public function getFilms() {
-                return isset($_SESSION['panier']) ? $_SESSION['panier'] : [];
             }
         }
-        ?>
 
+        // Suppression d'un film du panier
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['supprimer_id'])) {
+            $idASupprimer = $_POST['supprimer_id'];
+
+            foreach ($_SESSION['panier'] as $index => $film) {
+                if ($film["id"] == $idASupprimer) {
+                    unset($_SESSION['panier'][$index]);
+                    $_SESSION['panier'] = array_values($_SESSION['panier']); // Réindexer le tableau
+                    break;
+                }
+            }
+        }
+
+        // Affichage du panier
+        ?>
         <!DOCTYPE html>
         <html lang="fr">
         <head>
@@ -119,6 +114,7 @@ $films = $filmRepository->afficherCatalogue();
                     </tbody>
                 </table>
             <?php endif; ?>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         </body>
         </html>
