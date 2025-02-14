@@ -1,45 +1,7 @@
 <?php
-
-namespace src\modele;
-
 class Utilisateur
 {
-    private $idUtilisateur;
     private $nom;
-    private $prenom;
-    private $email;
-    private $mdp;
-    private $role;
-
-    public function __construct(array $donnees)
-    {
-        $this->hydrate($donnees);
-    }
-    public function hydrate(array $donnees) {
-        foreach ($donnees as $key => $value) {
-            $method = 'set'.ucfirst($key);
-
-            if (method_exists($this, $method)) {
-                // On appelle le setter
-                $this->$method($value);
-            }
-        }
-    }
-    /**
-     * @return mixed
-     */
-    public function getIdUtilisateur()
-    {
-        return $this->idUtilisateur;
-    }
-
-    /**
-     * @param mixed $idUtilisateur
-     */
-    public function setIdUtilisateur($idUtilisateur)
-    {
-        $this->idUtilisateur = $idUtilisateur;
-    }
 
     /**
      * @return mixed
@@ -121,4 +83,28 @@ class Utilisateur
         $this->role = $role;
     }
 
+    private $prenom;
+    private $email;
+    private $mdp;
+    private $role;
+
+    public function __construct(array $data = [])
+    {
+        if (!empty($data)) {
+            $this->hydrate($data);
+        }
+    }
+
+    public function hydrate(array $data)
+    {
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+    }
+
 }
+
+?>

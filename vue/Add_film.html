@@ -76,17 +76,17 @@
     <h1>Ajouter un Film</h1>
     <div class="form-container">
         <form action="../Add_film.php" method="POST" enctype="multipart/form-data">
-            <label for="film-title">Titre du film :</label>
-            <input type="text" id="film-title" name="film-title" required>
+            <label for="nom_film">Titre du film :</label>
+            <input type="text" id="nom_film" name="nom_film" required>
 
-            <label for="film-description">Description :</label>
-            <textarea id="film-description" name="film-description" rows="4" required></textarea>
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
 
-            <label for="type de film">type de film :</label>
-            <textarea id="type de film" name="type de film" rows="4" required></textarea>
+            <label for="genre">type de film :</label>
+            <textarea id="genre" name="genre" rows="4" required></textarea>
 
-            <label for="film-image">Image du film :</label>
-            <input type="file" id="film-image" name="film-image" accept="image/*" required>
+            <label for="image">Image du film :</label>
+            <input type="url" id="image" name="image" accept="image/*" required>
 
             <button type="submit">Ajouter le film</button>
 

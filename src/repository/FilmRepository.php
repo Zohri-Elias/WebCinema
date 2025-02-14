@@ -2,12 +2,11 @@
 
 class FilmRepository
 {
-
     private $bdd;
-
+    private $film;
     public function __construct()
     {
-
+    $this->bdd = new PDO('mysql:host=localhost;port=3307;dbname=webcinema', 'root', '');
     }
 
     public function ajoutFilm(FilmRepository $sceance)
@@ -18,7 +17,8 @@ class FilmRepository
             'nom_film' => $sceance->getNom_film(),
             'duree' => $sceance->getDuree(),
             'genre' => $sceance->getGenre(),
-            'description' => $sceance->getDescription()
+            'description' => $sceance->getDescription(),
+            'image' => $sceance->getImage()
         ));
 
         if ($res == true) {
