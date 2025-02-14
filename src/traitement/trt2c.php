@@ -1,30 +1,31 @@
-
 <?php
-
-require_once 'src/repository/UtilisateurRepository.php';
-require_once 'src/bdd/Bdd.php';
-
+require_once '../../src/bdd/Bdd.php';
+require_once '../../src/modele/Utilisateur.php';
+require_once '../../src/repository/UtilisateurRepository.php';
 
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? '';
-    $mdp = $_POST['mdp'] ?? '';
+$database = new Bdd();
+$bdd = $database->getBdd();
 
-    $bdd = new Bdd();
-    $utilisateurRepository = new utilisateurRepository($bdd);
-    $utilisateur = $utilisateurRepository->connexion($email, $mdp);
+if (isset($_POST['Co'])) {
+    extract($_POST);
+    var_dump($_POST);
 
-    if ($utilisateur) {
-        $_SESSION['user'] = [
-            'nom' => $utilisateur->getNom(),
-            'prenom' => $utilisateur->getPrenom(),
-            'email' => $utilisateur->getEmail(),
-            'role' => $utilisateur->getRole()
-        ];
-        header('Location: Index.php'); // Page de redirection après connexion
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $utilisateurRepository = new UtilisateurRepository();
+        $utilisateur = $utilisateurRepository->connexion($email, $mdp); // Passer les deux arguments ici
+
+        if ($utilisateur && password_verify($mdp, $utilisateur['mdp'])) {
+            echo "Bienvenue " . $utilisateur['prenom'] . " !";
+            header('Location: ../../index.php');
+        } else {
+            echo "Email ou mot de passe incorrect.";
+            header('Location: ../../vue/Connexion.html');
+        }
     } else {
-        echo 'Identifiants incorrects.';
+        echo "Email invalide.";
+        header('Location: ../../vue/Connexion.html');
     }
 }
 ?>
