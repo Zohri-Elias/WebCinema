@@ -10,12 +10,13 @@ class FilmRepository
     }
     public function ajoutFilm(Film $film)
     {
-        $sql = "INSERT INTO film (nom_film,genre,description,image) VALUES (:nom_film,:genre,:description,:image)";
+        $sql = "INSERT INTO film (nom_film,genre,description,duree,image) VALUES (:nom_film,:genre,:description,:duree,:image)";
         $req = $this->bdd->prepare($sql);
         $req->execute(array(
             'nom_film' => $film->getNomFilm(),
             'genre' => $film->getGenre(),
-            'description' =>$film->getDescription(),
+            'description' => $film->getDescription(),
+            'duree' => $film->getDuree(),
             'image' => $film->getImage()
         ));
 
@@ -26,24 +27,25 @@ class FilmRepository
         }
     }
 
-//    public function deleteFilm(FilmRepository $supprimer)
-//     {
-    //        $AAA = "DELETE from film WEHRE (nom_film = :nom_film, duree = :duree, genre = :genre, description = :description, image = :image";
-    //        $requ = $this->bdd->getBdd()->prepare($AAA);
-    //        $resu = $requ->execute(array(
-//             'nom_film' => $supprimer->getNom_film(),
-    //            'duree' => $supprimer->getDuree(),
-    //           'genre' => $supprimer->getGenre(),
-    //          'description' => $supprimer->getDescription(),
-    //           'image' => $supprimer->getImage()
-    //       ));
+    public function supprimeFilm(FilmRepository $supprimer)
+    {
+        $SQL = "DELETE from film WEHRE (nom_film = :nom_film, duree = :duree, genre = :genre, description = :description, image = :image";
+        $requ = $this->bdd->getBdd()->prepare($SQL);
+        $resu = $requ->execute(array(
+            'nom_film' => $supprimer->getNom_film(),
+            'duree' => $supprimer->getDuree(),
+            'genre' => $supprimer->getGenre(),
+            'description' => $supprimer->getDescription(),
+            'duree' => $supprimer ->getDuree(),
+            'image' => $supprimer->getImage()
+        ));
 
-    //        if ($resu == true) {
-    //       return true;
-    //       } else {
-    //           return false;
-    //       }
-    //  }
+        if ($resu == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 
