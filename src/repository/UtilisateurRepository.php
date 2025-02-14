@@ -10,12 +10,16 @@ class utilisateurRepository
 
     public function inscription(Utilisateur $utilisateur)
     {
-        $req = $this->bdd->getBdd()->prepare('INSERT INTO utilisateur (prenom, nom,  email, mdp) VALUES (:prenom, :nom,  :email, :mdp)');
+
+        $hashedPassword = password_hash($utilisateur->getMdp(), PASSWORD_DEFAULT);
+
+        $req = $this->bdd->getBdd()->prepare('INSERT INTO utilisateur (prenom, nom, email, mdp) VALUES (:prenom, :nom, :email, :mdp)');
         $success = $req->execute([
             "nom" => $utilisateur->getNom(),
             "prenom" => $utilisateur->getPrenom(),
             "email" => $utilisateur->getEmail(),
-            "mdp" => $utilisateur->getMdp()]);
+            "mdp" => $hashedPassword
+        ]);
 
         return $success;
     }

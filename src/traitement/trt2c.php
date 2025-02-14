@@ -4,6 +4,8 @@ require_once '../../src/modele/Utilisateur.php';
 require_once '../../src/repository/UtilisateurRepository.php';
 
 session_start();
+var_dump($_POST);
+
 
 $database = new Bdd();
 $bdd = $database->getBdd();
@@ -21,7 +23,7 @@ if (isset($_POST['Co'])) {
             header('Location: ../../index.php');
         } else {
             echo "Email ou mot de passe incorrect.";
-            header('Location: ../../vue/Connexion.html');
+            header('Location: ../../src/traitement/trt2c.php');
         }
     } else {
         echo "Email invalide.";
