@@ -5,29 +5,29 @@ require_once '../../src/repository/UtilisateurRepository.php';
 
 session_start();
 var_dump($_POST);
-
-
-$database = new Bdd();
-$bdd = $database->getBdd();
-
+//exit();
 if (isset($_POST['Co'])) {
     extract($_POST);
-    var_dump($_POST);
+    var_dump($email);
+    var_dump($mdp);
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $utilisateurRepository = new UtilisateurRepository();
         $utilisateur = $utilisateurRepository->connexion($email, $mdp); // Passer les deux arguments ici
 
-        if ($utilisateur && password_verify($mdp, $utilisateur['mdp'])) {
+        if (isset($utilisateur["id_utilisateur"])) {
             echo "Bienvenue " . $utilisateur['prenom'] . " !";
             header('Location: ../../index.php');
+            exit();
         } else {
             echo "Email ou mot de passe incorrect.";
-            header('Location: ../../src/traitement/trt2c.php');
+            header('Location: ../../vue/Connexion.html');
+            exit();
         }
     } else {
         echo "Email invalide.";
         header('Location: ../../vue/Connexion.html');
+        exit();
     }
 }
 ?>
