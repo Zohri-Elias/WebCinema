@@ -1,38 +1,22 @@
 <?php
 class Utilisateur
 {
-    private $idUtilisateur;
+    private $nom;
 
     /**
      * @return mixed
      */
-    public function getIdUtilisateur()
+    public function getNom()
     {
-        return $this->idUtilisateur;
+        return $this->nom;
     }
 
     /**
-     * @return mixed
+     * @param mixed $nom
      */
-    public function getMdp()
+    public function setNom($nom)
     {
-        return $this->mdp;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
+        $this->nom = $nom;
     }
 
     /**
@@ -44,28 +28,77 @@ class Utilisateur
     }
 
     /**
+     * @param mixed $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
      * @return mixed
      */
-    public function getNom()
+    public function getEmail()
     {
-        return $this->nom;
+        return $this->email;
     }
-    private $nom;
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMdp()
+    {
+        return $this->mdp;
+    }
+
+    /**
+     * @param mixed $mdp
+     */
+    public function setMdp($mdp)
+    {
+        $this->mdp = $mdp;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
     private $prenom;
     private $email;
     private $mdp;
     private $role;
 
-    public function __construct(array $donnees)
+    public function __construct(array $data = [])
     {
-        $this->hydrate($donnees);
+        if (!empty($data)) {
+            $this->hydrate($data);
+        }
     }
 
-    public function hydrate(array $donnees)
+    public function hydrate(array $data)
     {
-        foreach ($donnees as $key => $value) {
+        foreach ($data as $key => $value) {
             $method = 'set' . ucfirst($key);
-
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }
@@ -74,5 +107,4 @@ class Utilisateur
 
 }
 
-
-
+?>

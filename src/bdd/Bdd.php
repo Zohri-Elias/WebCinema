@@ -3,14 +3,16 @@ class Bdd {
     private $bdd;
 
     public function __construct($host = 'localhost', $dbname = 'webcinema', $username = 'root', $password = '') {
-
-        $this->bdd = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $this->bdd->exec("set names utf8");
+        try {
+            $this->bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+            $this->bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Erreur de connexion : " . $e->getMessage());
+        }
     }
 
-    public function getbdd() {
+    public function getBdd() {
         return $this->bdd;
     }
 }
-//port=3307;
 ?>

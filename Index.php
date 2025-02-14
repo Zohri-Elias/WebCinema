@@ -1,7 +1,6 @@
 <?php
 $bdd = new PDO(
         'mysql:host=localhost;
-        
         dbname=webcinema;
         charset=utf8',
         'root',
@@ -12,7 +11,7 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film DESC LIMIT 3")->fetchA
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
