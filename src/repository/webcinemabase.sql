@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `film` (
     `duree` varchar(50) NOT NULL,
     `genre` enum('Comédie', 'Drame', 'Thriller', 'Action', 'Horreur', 'Science-fiction', 'Fantastique', 'Aventure', 'Animation', 'Biographie', 'Documentaire', 'Famille', 'Fantaisie', 'Historique', 'Musical', 'Mystère', 'Romance', 'Sport', 'Guerre', 'Western') NOT NULL,
     `description` varchar(1000) DEFAULT NULL,
-    `image` varchar(1000 DEFAULT NULL,
+    `image` varchar(1000) DEFAULT NULL,
     PRIMARY KEY (`id_film`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
