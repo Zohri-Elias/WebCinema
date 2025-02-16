@@ -5,7 +5,6 @@ require_once '../../src/repository/UtilisateurRepository.php';
 
 session_start();
 var_dump($_POST);
-//exit();
 if (isset($_POST['Co'])) {
     extract($_POST);
     var_dump($email);

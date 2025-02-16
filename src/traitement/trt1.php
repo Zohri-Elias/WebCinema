@@ -23,6 +23,7 @@ if (isset($_POST['ok'])) {
         $resultat = $utilisateurRepository->inscription($utilisateur);
         if ($resultat) {
             echo "Inscription réussie!";
+            header ('Location: ../../vue/Connexion.html');
         } else {
             echo "Erreur lors de l'inscription.";
         }
