@@ -46,6 +46,31 @@ class FilmRepository
             return false;
         }
     }
+    public function modifierFilm(Film $film)
+    {
+        $sql = "UPDATE film SET nom_film = :nom_film, genre = :genre, description = :description, duree = :duree, image = :image WHERE id_film = :id_film";
+        $req = $this->bdd->prepare($sql);
+
+        if ($req->execute(array(
+            'id_film' => $film->getIdFilm(),
+            'nom_film' => $film->getNomFilm(),
+            'genre' => $film->getGenre(),
+            'description' => $film->getDescription(),
+            'duree' => $film->getDuree(),
+            'image' => $film->getImage()
+        ))) {
+            return true;
+        } else {
+
+            $errorInfo = $req->errorInfo();
+            echo "Erreur SQL: " . $errorInfo[2];
+            return false;
+        }
+
+
+
+return $req->rowCount() > 0;
+    }
 
 
 

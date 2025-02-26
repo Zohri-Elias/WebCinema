@@ -44,7 +44,7 @@
             width: 60%;
             margin: auto;
         }
-        .form-container input, .form-container textarea, .form-container button {
+        .form-container input, .form-container textarea, .form-container select, .form-container button {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -59,6 +59,18 @@
         }
         .form-container button:hover {
             background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
         }
     </style>
 </head>
@@ -75,25 +87,55 @@
 <div class="content">
     <h1>Modifier un Film</h1>
     <div class="form-container">
-        <form action="edit_film.php" method="POST" enctype="multipart/form-data">
+        <form action="../src/traitement/ModifierFilmTrt.php" method="POST" enctype="multipart/form-data">
             <label for="film-id">ID du film :</label>
-            <input type="text" id="film-id" name="film-id" required>
+            <input type="text" id="film-id" name="id_film" required>
 
             <label for="film-title">Titre du film :</label>
-            <input type="text" id="film-title" name="film-title" required>
+            <input type="text" id="film-title" name="nom_film" required>
+
+            <label for="film-genre">Genre :</label>
+            <input type="text" id="film-genre" name="genre" required>
 
             <label for="film-description">Description :</label>
-            <textarea id="film-description" name="film-description" rows="4" required></textarea>
+            <textarea id="film-description" name="description" rows="4" required></textarea>
+
+            <label for="film-duration">Durée (en minutes) :</label>
+            <input type="number" id="film-duration" name="duree" required>
 
             <label for="film-image">Nouvelle image (optionnel) :</label>
-            <input type="file" id="film-image" name="film-image" accept="image/*">
+            <input type="file" id="film-image" name="image" accept="image/*">
 
-            <button type="submit">Modifier le film</button>
+            <button type="submit" name="ok">Modifier le film</button>
 
-            <a href="Administration.html">retour</a>
+            <a href="Administration.html">Retour</a>
         </form>
     </div>
+
+    <h2>Liste des Films</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nom du film</th>
+            <th>Genre</th>
+            <th>Durée</th>
+            <th>Date de sortie</th>
+            <th>Réalisateur</th>
+        </tr>
+        <?php
+        require_once '../src/bdd/Bdd.php';
+        $database = new Bdd();
+        $bdd = $database->getBdd();
+
+        $sql = "SELECT id_film, nom_film, genre, duree, description FROM film";
+        $stmt = $bdd->query($sql);
+
+        while ($film = $stmt->fetch()) {
+            echo "<tr><td>" . htmlspecialchars($film['id_film']) . "</td><td>" . htmlspecialchars($film['nom_film']) . "</td><td>" . htmlspecialchars($film['genre']) . "</td><td>" . htmlspecialchars($film['duree']) . "</td><td>" . htmlspecialchars($film['description']) . "</td><td>" ;    }
+        ?>
+    </table>
 </div>
+
 
 </body>
 </html>
