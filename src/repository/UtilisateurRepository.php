@@ -1,3 +1,4 @@
+
 <?php
 class UtilisateurRepository
 {
@@ -37,5 +38,19 @@ class UtilisateurRepository
 
         return false;
     }
+
+    public function getUtilisateur($email) {
+        $query = "SELECT * FROM utilisateur WHERE email = :email";
+        $stmt = $this->bdd->getBdd()->prepare($query);
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($userData) {
+            return new Utilisateur($userData);
+        }
+        return null;
+    }
+
 }
 ?>
