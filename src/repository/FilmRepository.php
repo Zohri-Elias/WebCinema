@@ -8,11 +8,14 @@ class FilmRepository
     {
     $this->bdd = new PDO('mysql:host=localhost;dbname=webcinema', 'root', '');
     }
-    public function ajoutFilm(Film $film)
+    public function ajouterFilm(Film $film)
     {
-        $sql = "INSERT INTO film (nom_film,genre,description,duree,image) VALUES (:nom_film,:genre,:description,:duree,:image)";
+        $sql = "INSERT INTO film (nom_film, genre, description, duree, image) 
+            VALUES (:nom_film, :genre, :description, :duree, :image)";
+
         $req = $this->bdd->prepare($sql);
-        $req->execute(array(
+
+        $result = $req->execute(array(
             'nom_film' => $film->getNomFilm(),
             'genre' => $film->getGenre(),
             'description' => $film->getDescription(),
@@ -20,57 +23,52 @@ class FilmRepository
             'image' => $film->getImage()
         ));
 
-        if ($req == true) {
+        if ($result) {
             return true;
         } else {
             return false;
         }
-    }
 
-    public function supprimeFilm(FilmRepository $supprimer)
-    {
-        $SQL = "DELETE from film WEHRE (nom_film = :nom_film, duree = :duree, genre = :genre, description = :description, image = :image";
-        $requ = $this->bdd->getBdd()->prepare($SQL);
-        $resu = $requ->execute(array(
-            'nom_film' => $supprimer->getNom_film(),
-            'duree' => $supprimer->getDuree(),
-            'genre' => $supprimer->getGenre(),
-            'description' => $supprimer->getDescription(),
-            'duree' => $supprimer ->getDuree(),
-            'image' => $supprimer->getImage()
-        ));
 
-        if ($resu == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public function modifierFilm(Film $film)
+}
+
+    public function supprimerFilm($idFilm)
     {
-        $sql = "UPDATE film SET nom_film = :nom_film, genre = :genre, description = :description, duree = :duree, image = :image WHERE id_film = :id_film";
+        $sql = "DELETE FROM film WHERE id_film = :id_film";
+
         $req = $this->bdd->prepare($sql);
 
-        if ($req->execute(array(
+        $result = $req->execute(array(
+            'id_film' => $idFilm
+        ));
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function modifierFilm(Film $film)
+    {
+        $sql = "UPDATE film 
+                SET nom_film = :nom_film, genre = :genre, description = :description, 
+                    duree = :duree, image = :image 
+                WHERE id_film = :id_film";
+
+        $req = $this->bdd->prepare($sql);
+        $req->execute([
             'id_film' => $film->getIdFilm(),
             'nom_film' => $film->getNomFilm(),
             'genre' => $film->getGenre(),
             'description' => $film->getDescription(),
             'duree' => $film->getDuree(),
             'image' => $film->getImage()
-        ))) {
-            return true;
-        } else {
+        ]);
 
-            $errorInfo = $req->errorInfo();
-            echo "Erreur SQL: " . $errorInfo[2];
-            return false;
-        }
-
-
-
-return $req->rowCount() > 0;
+        return $req->rowCount() > 0;
     }
+
 
 
 

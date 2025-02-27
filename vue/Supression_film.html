@@ -6,94 +6,83 @@
     <title>Supprimer un Film</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
             color: #333;
-            margin: 0;
-            padding: 0;
         }
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            border-right: 1px solid #444;
+            position: fixed;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+        .sidebar-header {
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            background-color: #222;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 40px;
         }
         h1 {
             font-size: 2em;
             color: #444;
         }
-        table {
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: auto;
+        }
+        .form-container input, .form-container button {
             width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
             padding: 12px;
-            text-align: left;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
         }
-        th {
-            background-color: #f8f8f8;
-        }
-        td {
-            background-color: #fafafa;
-        }
-        .delete-button {
+        .form-container button {
             background-color: #dc3545;
             color: white;
-            padding: 8px 16px;
-            border: none;
             cursor: pointer;
-            font-size: 1em;
-            border-radius: 6px;
         }
-        .delete-button:hover {
+        .form-container button:hover {
             background-color: #c82333;
-        }
-        .message {
-            padding: 15px;
-            margin-bottom: 20px;
-            background-color: #f8f9fa;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            color: #333;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="sidebar">
+    <div class="sidebar-header">MATERIAL ADMIN PRO</div>
+    <ul class="sidebar-menu">
+        <li onclick="window.location.href='../src/traitement/AjoutFilmTrT.php'">Ajouter un film</li>
+        <li onclick="window.location.href='modify_film.html'">Modifier un film</li>
+        <li onclick="window.location.href='delete_film.html'">Supprimer un film</li>
+    </ul>
+</div>
+
+<div class="content">
     <h1>Supprimer un Film</h1>
+    <div class="form-container">
+        <form action="../src/traitement/SupprimeFilmTrT.php" method="POST">
+            <label for="id_film">ID du film à supprimer :</label>
+            <input type="number" id="id_film" name="id_film" required>
 
-    <!-- Affichage du message si présent -->
-    <div id="message">
-        <!-- Le message peut être injecté ici via PHP -->
-        <!-- Exemple: <div class="message">Film supprimé avec succès.</div> -->
+            <button type="submit" name="ok">Supprimer le film</button>
+        </form>
     </div>
-
-    <h2>Liste des films</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Titre du Film</th>
-            <th>Action</th>
-        </tr>
-        <!-- Exemple d'une ligne de film (ce bloc doit être généré dynamiquement avec PHP) -->
-        <tr>
-            <td>1</td>
-            <td>Film Exemple 1</td>
-            <td><a href="delete_film.php?id=1"><button class="delete-button">Supprimer</button></a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Film Exemple 2</td>
-            <td><a href="delete_film.php?id=2"><button class="delete-button">Supprimer</button></a></td>
-        </tr>
-        <!-- Ajouter d'autres films selon les données disponibles dans la base de données -->
-    </table>
 </div>
 
 </body>

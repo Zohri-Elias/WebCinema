@@ -104,7 +104,7 @@
             <input type="number" id="film-duration" name="duree" required>
 
             <label for="film-image">Nouvelle image (optionnel) :</label>
-            <input type="file" id="film-image" name="image" accept="image/*">
+            <input type="text" id="film-image" name="image" accept="image/*">
 
             <button type="submit" name="ok">Modifier le film</button>
 

@@ -63,8 +63,12 @@ $films = $filmRepository->afficherCatalogue();
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Image du film -->
-                        <img class="card-img-top" src="<?= htmlspecialchars($film->getImage()) ?>" alt="<?= htmlspecialchars($film->getNomFilm()) ?>" />
+                        <img class="card-img-top"
+                             src="<?= htmlspecialchars($film->getImage() ? $film->getImage() : '../assets/img/64c4552214012a590dae8b9469b0eb62.jpeg') ?>"
+                             alt="<?= htmlspecialchars($film->getNomFilm()) ?>" />
+
                         <!-- Détails du film -->
+
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <h5 class="fw-bolder"><?= htmlspecialchars($film->getNomFilm()) ?></h5>
