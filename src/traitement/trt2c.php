@@ -4,18 +4,24 @@ require_once '../../src/modele/Utilisateur.php';
 require_once '../../src/repository/UtilisateurRepository.php';
 
 session_start();
+
 var_dump($_POST);
+
 if (isset($_POST['Co'])) {
     extract($_POST);
-    var_dump($email);
-    var_dump($mdp);
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $utilisateurRepository = new UtilisateurRepository();
-        $utilisateur = $utilisateurRepository->connexion($email, $mdp); // Passer les deux arguments ici
+        $utilisateur = $utilisateurRepository->connexion($email, $mdp);
 
         if (isset($utilisateur["id_utilisateur"])) {
-            echo "Bienvenue " . $utilisateur['prenom'] . " !";
+            $_SESSION['user_id'] = $utilisateur['id_utilisateur'];
+            $_SESSION['prenom'] = $utilisateur['prenom'];
+            $_SESSION['nom'] = $utilisateur['nom'];
+            $_SESSION['email'] = $utilisateur['email'];
+            $_SESSION['role'] = $utilisateur['role'];
+
+
             header('Location: ../../index.php');
             exit();
         } else {

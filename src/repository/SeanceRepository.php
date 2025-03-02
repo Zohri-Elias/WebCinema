@@ -35,7 +35,7 @@ class SeanceRepository
         $sql = "UPDATE Seance SET date=:date,heure=:heure,nb_place_res=:nb_place_res,ref_salle=:ref_salle,ref_film=:ref_film";
         $req = $this->bdd->getBdd()->prepare($sql);
         $res = $req->execute(array(
-            'date' => $seance->getTitre(),
+            'date' => $seance->getDate(),
             'heure' => $seance->getHeure(),
             'nb_place_res' => $seance->getNbPlaceRes(),
             'ref_salle' => $seance->getRefSalle(),

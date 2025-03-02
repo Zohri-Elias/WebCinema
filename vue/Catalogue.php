@@ -6,6 +6,7 @@ require_once "../src/repository/reservationRepository.php";
 
 $filmRepository = new FilmRepository();
 $films = $filmRepository->afficherCatalogue();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,7 +33,6 @@ $films = $filmRepository->afficherCatalogue();
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#affiche">À voir</a></li>
-                <li class="nav-item"><a class="nav-link" href="profile.php">Profil</a></li>
             </ul>
             <form class="d-flex">
                 <button class="btn btn-outline-dark" type="button">

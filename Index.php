@@ -6,6 +6,7 @@ $bdd = new PDO(
         'root',
         ''
 );
+session_start();
 // port=3307;
 $films = $bdd->query("SELECT * FROM film ORDER BY id_film DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -48,6 +49,9 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film DESC LIMIT 3")->fetchA
                                 <li><a class="dropdown-item" href="vue/Connexion.html">Connexion</a></li>
                                 <li><a class="dropdown-item" href="vue/Inscription.html">Inscription</a></li>
                             </ul>
+                            <?php if (isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item"><a class="nav-link" href="vue/Profile.php">Profil</a></li>
+                        <?php endif; ?>
                         </li>
                     </ul>
                 </div>

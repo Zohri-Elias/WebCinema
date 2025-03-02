@@ -1,62 +1,59 @@
 <?php
-require_once "../src/bdd/Bdd.php";
-require_once "../src/modele/Utilisateur.php";
-require_once "../src/repository/UtilisateurRepository.php";
+require_once '../src/bdd/Bdd.php';
+require_once '../src/repository/utilisateurRepository.php';
+
 session_start();
-if (!isset($_SESSION['email'])) {
-    header('Location: Connexion.html'); // Redirige vers la page de connexion si l'email n'est pas en session
-    exit();
-}
 
-require_once "../src/bdd/Bdd.php";
-require_once "../src/modele/Utilisateur.php";
-require_once "../src/repository/UtilisateurRepository.php";
 
-$users = new UtilisateurRepository();
-$user = $users->getUtilisateur($_SESSION['email']);
-
-if (!$user) {
-    echo "Utilisateur introuvable.";
-    exit();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
 }
 
 ?>
-
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Utilisateur</title>
-    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
     <style>
-        body { background: rgb(0, 0, 0); color: white; }
-        .container { background: #222; padding: 20px; border-radius: 10px; }
-        .labels { font-size: 14px; font-weight: bold; color: #bbb; }
-        .profile-value { font-size: 16px; color: #ddd; padding: 5px; }
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        p { font-size: 18px; }
+        a { display: inline-block; margin-top: 20px; padding: 10px 20px; text-decoration: none; background: red; color: white; border-radius: 5px; }
+        a:hover { background: darkred; }
     </style>
 </head>
 <body>
 
-<div class="container rounded mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-3 border-right text-center">
-            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-            <h4 class="mt-3">Edogaru</h4>
-            <p class="text-muted"><?php echo $user['email']; ?></p>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <h4>Informations du Profil</h4>
-                <div class="mt-3">
-                    <p class="labels">Nom: <span class="profile-value"><?php echo $user['nom']; ?></span></p>
-                    <p class="labels">Prénom: <span class="profile-value"><?php echo $user['prenom']; ?></span></p>
-                    <p class="labels">Email: <span class="profile-value"><?php echo $user['email']; ?></span></p>
-                    <p class="labels">Mot de Passe: <span class="profile-value"><?php echo $user['mdp']; ?></span></p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container">
+    <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['nom']); ?>
+        <?php echo htmlspecialchars($_SESSION['prenom']); ?>!</h1>
+    <form action="../src/repository/UtilisateurRepository.php" method="POST">
+        <label for="nom">Nouveau nom :</label>
+        <input type="text" id="nom" name="nom"><br>
+
+        <label for="prenom">Nouveau prénom :</label>
+        <input type="text" id="prenom" name="prenom"><br>
+
+        <p><strong>ID :</strong> <?php echo $_SESSION['user_id']; ?></p>
+        <input type="text" id="user_id" name="user_id"><br>
+
+        <p><strong>Email :</strong> <?php echo htmlspecialchars($_SESSION['email']); ?></p>
+        <input type="email" id="email" name="email"><br>
+
+        <p><strong>Rôle :</strong> <?php echo htmlspecialchars($_SESSION['role']); ?></p>
+        <input type="text" id="role" name="role"><br>
+
+        <button type="submit">Mettre à jour</button>
+    </form>
 </div>
+
+
+<a href="../src/traitement/Logout.php">Déconnexion</a>
+    </div>
+
 </body>
 </html>
