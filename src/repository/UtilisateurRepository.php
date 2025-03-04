@@ -52,5 +52,31 @@ class UtilisateurRepository
         return null;
     }
 
+    public function modifierUtilisateur(Utilisateur $utilisateur) {
+        if (!isset($_SESSION['user_id'])) {
+            throw new Exception("ID utilisateur non défini dans la session.");
+        }
+
+        $hashedPassword = password_hash($utilisateur->getMdp(), PASSWORD_DEFAULT);
+
+        $req = $this->bdd->getBdd()->prepare('
+        UPDATE utilisateur 
+        SET prenom = :prenom, nom = :nom, email = :email, mdp = :mdp 
+        WHERE id = :id;
+    ');
+
+        $success = $req->execute([
+            "id" => $_SESSION['user_id'],
+            "nom" => $utilisateur->getNom(),
+            "prenom" => $utilisateur->getPrenom(),
+            "email" => $utilisateur->getEmail(),
+            "mdp" => $hashedPassword,
+            "role"=> $utilisateur->getRole()
+        ]);
+
+        return $success;
+    }
+
+
 }
 ?>

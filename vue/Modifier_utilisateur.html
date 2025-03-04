@@ -92,12 +92,12 @@
   </div>
   <form method="POST" action="../src/traitement/ModifierUtilisateurTrt.php">
     <div class="mb-3">
-      <label for="idUser" class="form-label">Id:</label>
+      <label for="user_id" class="form-label">Id:</label>
       <div class="input-group">
                 <span class="input-group-text">
                     <i class="bi bi-person"></i>
                 </span>
-        <input type="text" class="form-control" id="idUser" name="idUser" placeholder="Entrez l'id de l'utilisateur" required>
+        <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Entrez l'id de l'utilisateur" required>
       </div>
     </div>
     <div class="mb-3">
@@ -106,7 +106,7 @@
                 <span class="input-group-text">
                     <i class="bi bi-person"></i>
                 </span>
-        <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez votre nom" required>
+        <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez le nom" required>
       </div>
     </div>
     <div class="mb-3">
@@ -115,7 +115,7 @@
                 <span class="input-group-text">
                     <i class="bi bi-person"></i>
                 </span>
-        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez le prénom" required>
       </div>
     </div>
     <div class="mb-3">
@@ -124,7 +124,7 @@
                 <span class="input-group-text">
                     <i class="bi bi-envelope"></i>
                 </span>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre email" required>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Entrez le email" required>
       </div>
     </div>
     <div class="mb-3">
@@ -133,9 +133,18 @@
                 <span class="input-group-text">
                     <i class="bi bi-lock"></i>
                 </span>
-        <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez votre mot de passe" required>
+        <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez le mot de passe" required>
       </div>
     </div>
+      <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-person"></i>
+                </span>
+              <input type="text" class="form-control" id="role" name="role" placeholder="Entrez le role" required>
+          </div>
+      </div>
     <button type="submit" class="btn btn-primary w-100" name ="ok">Envoyer</button>
   </form>
 </div>
