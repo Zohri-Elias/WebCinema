@@ -67,7 +67,7 @@
 <div class="sidebar">
     <div class="sidebar-header">MATERIAL ADMIN PRO</div>
     <ul class="sidebar-menu">
-        <li onclick="window.location.href='add_film.html'">Ajouter un film</li>
+        <li onclick="window.location.href='../src/traitement/AjoutFilmTrT.php'">Ajouter un film</li>
         <li onclick="window.location.href='modify_film.html'">Modifier un film</li>
     </ul>
 </div>
@@ -75,23 +75,23 @@
 <div class="content">
     <h1>Ajouter un Film</h1>
     <div class="form-container">
-        <form action="../Add_film.php" method="POST" enctype="multipart/form-data">
+        <form action="../src/traitement/AjoutFilmTrT.php" method="POST">
             <label for="nom_film">Titre du film :</label>
             <input type="text" id="nom_film" name="nom_film" required>
 
             <label for="description">Description :</label>
             <textarea id="description" name="description" rows="4" required></textarea>
 
-            <label for="genre">type de film :</label>
-            <textarea id="genre" name="genre" rows="4" required></textarea>
+            <label for="genre">Type de film :</label>
+            <input type="text" id="genre" name="genre" required>
 
-            <label for="image">Image du film :</label>
-            <input type="url" id="image" name="image" accept="image/*" required>
+            <label for="duree">Durée du film :</label>
+            <input type="number" id="duree" name="duree" required>
 
-            <button type="submit">Ajouter le film</button>
+            <label for="image">Image du film (URL) :</label>
+            <input type="url" id="image" name="image" required>
 
-            <a href="Administration.html">retour</a>
-
+            <button type="submit" name="ok">Ajouter le film</button>
         </form>
     </div>
 </div>

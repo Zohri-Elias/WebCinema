@@ -6,7 +6,7 @@ class FilmRepository
     private $film;
     public function __construct()
     {
-        $this->bdd = new PDO('mysql:host=localhost;dbname=webcinema', 'root', '');
+    $this->bdd = new PDO('mysql:host=localhost;dbname=webcinema', 'root', '');
     }
     public function ajouterFilm(Film $film)
     {
@@ -30,7 +30,7 @@ class FilmRepository
         }
 
 
-    }
+}
 
     public function supprimerFilm($idFilm)
     {

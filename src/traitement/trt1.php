@@ -12,18 +12,18 @@ if (isset($_POST['ok'])) {
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $utilisateurRepository = new UtilisateurRepository();
-        $hashedPassword = password_hash($mdp, PASSWORD_DEFAULT);
 
         $utilisateur = new Utilisateur([
             'prenom' => $prenom,
             'nom' => $nom,
             'email' => $email,
-            'mdp' => $hashedPassword,
+            'mdp' => $mdp,
         ]);
 
         $resultat = $utilisateurRepository->inscription($utilisateur);
         if ($resultat) {
             echo "Inscription réussie!";
+            header ('Location: ../../vue/Connexion.html');
         } else {
             echo "Erreur lors de l'inscription.";
         }

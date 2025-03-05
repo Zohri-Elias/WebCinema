@@ -1,5 +1,5 @@
 <?php
-class Bdd {
+class   Bdd {
     private $bdd;
 
     public function __construct($host = 'localhost', $dbname = 'webcinema', $username = 'root', $password = '') {
@@ -16,3 +16,4 @@ class Bdd {
     }
 }
 ?>
+
