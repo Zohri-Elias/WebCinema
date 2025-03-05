@@ -53,7 +53,8 @@ class FilmRepository
     {
         $sql = "UPDATE film 
                 SET nom_film = :nom_film, genre = :genre, description = :description, 
-                    duree = :duree, image = :image 
+                    duree = :duree,image = COALESCE(NULLIF(:image, ''), image)
+
                 WHERE id_film = :id_film";
 
         $req = $this->bdd->prepare($sql);
