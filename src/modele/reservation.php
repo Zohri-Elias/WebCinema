@@ -8,6 +8,12 @@ class reservation
     private $refUser;
     private $refSeance;
     private $nbrPlace;
+    private $idFilm;
+    private $nom_film;
+    private $duree;
+    private $image;
+    private $genre;
+    private $descriptions;
 
 
     public function __construct(array $donnees)
@@ -87,6 +93,32 @@ class reservation
     public function setRefUser($refUser)
     {
         $this->refUser = $refUser;
+    }
+
+
+    public function getIdFilm()
+    {
+        return $this->idFilm;
+    }
+    public function getNomFilm()
+    {
+        return $this->nom_film;
+    }
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+    public function getImage()
+    {
+        return $this->image;
+    }
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+    public function getDescription()
+    {
+        return $this->descriptions;
     }
 
 }
