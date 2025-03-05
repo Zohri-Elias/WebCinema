@@ -4,6 +4,15 @@
 class Utilisateur
 {
     private $nom;
+    private $idUtilisateur;
+
+    /**
+     * @return mixed
+     */
+    public function getIdUtilisateur()
+    {
+        return $this->idUtilisateur;
+    }
 
     /**
      * @return mixed
@@ -90,18 +99,18 @@ class Utilisateur
     private $mdp;
     private $role;
 
-    public function __construct(array $data = [])
+    public function __construct(array $donnees)
     {
-        if (!empty($data)) {
-            $this->hydrate($data);
-        }
+        $this->hydrate($donnees);
     }
-
-    public function hydrate(array $data)
+    public function hydrate($donnees)
     {
-        foreach ($data as $key => $value) {
-            $method = 'set' . ucfirst($key);
-            if (method_exists($this, $method)) {
+        foreach ($donnees as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+
+            if (is_callable(array($this, $method)))
+            {
                 $this->$method($value);
             }
         }
