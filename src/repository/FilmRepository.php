@@ -6,27 +6,71 @@ class FilmRepository
     private $film;
     public function __construct()
     {
-    $this->bdd = new PDO('mysql:host=localhost;port=3307;dbname=webcinema', 'root', '');
+        $this->bdd = new PDO('mysql:host=localhost;dbname=webcinema', 'root', '');
     }
-
-    public function ajoutFilm(FilmRepository $sceance)
+    public function ajouterFilm(Film $film)
     {
-        $sql = "INSERT INTO film (nom_film,duree,genre,description) VALUES (:nom_film,:duree,:genre,:description)";
-        $req = $this->bdd->getBdd()->prepare($sql);
-        $res = $req->execute(array(
-            'nom_film' => $sceance->getNom_film(),
-            'duree' => $sceance->getDuree(),
-            'genre' => $sceance->getGenre(),
-            'description' => $sceance->getDescription(),
-            'image' => $sceance->getImage()
+        $sql = "INSERT INTO film (nom_film, genre, description, duree, image) 
+            VALUES (:nom_film, :genre, :description, :duree, :image)";
+
+        $req = $this->bdd->prepare($sql);
+
+        $result = $req->execute(array(
+            'nom_film' => $film->getNomFilm(),
+            'genre' => $film->getGenre(),
+            'description' => $film->getDescription(),
+            'duree' => $film->getDuree(),
+            'image' => $film->getImage()
         ));
 
-        if ($res == true) {
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
+    public function supprimerFilm($idFilm)
+    {
+        $sql = "DELETE FROM film WHERE id_film = :id_film";
+
+        $req = $this->bdd->prepare($sql);
+
+        $result = $req->execute(array(
+            'id_film' => $idFilm
+        ));
+
+        if ($result) {
             return true;
         } else {
             return false;
         }
     }
+
+    public function modifierFilm(Film $film)
+    {
+        $sql = "UPDATE film 
+                SET nom_film = :nom_film, genre = :genre, description = :description, 
+                    duree = :duree, image = :image 
+                WHERE id_film = :id_film";
+
+        $req = $this->bdd->prepare($sql);
+        $req->execute([
+            'id_film' => $film->getIdFilm(),
+            'nom_film' => $film->getNomFilm(),
+            'genre' => $film->getGenre(),
+            'description' => $film->getDescription(),
+            'duree' => $film->getDuree(),
+            'image' => $film->getImage()
+        ]);
+
+        return $req->rowCount() > 0;
+    }
+
+
+
 
     public function afficherCatalogue()
     {
