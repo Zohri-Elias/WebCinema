@@ -52,5 +52,47 @@ class UtilisateurRepository
         return null;
     }
 
+    public function modifierUtilisateur($prenom, $nom, $email, $idUtilisateur) {
+        // Créer un tableau pour stocker les champs à mettre à jour et leurs valeurs
+        $updateFields = [];
+        $params = [];
+
+        // Ajouter les champs modifiés à la requête
+        if ($prenom) {
+            $updateFields[] = "prenom = :prenom";
+            $params['prenom'] = $prenom;
+        }
+
+        if ($nom) {
+            $updateFields[] = "nom = :nom";
+            $params['nom'] = $nom;
+        }
+
+        if ($email) {
+            $updateFields[] = "email = :email";
+            $params['email'] = $email;
+        }
+
+        // Si aucune donnée n'est remplie, on arrête le processus
+        if (empty($updateFields)) {
+            return false;
+        }
+
+        // Ajouter l'ID utilisateur à la requête
+        $updateFields[] = "id_utilisateur = :id_utilisateur";
+        $params['id_utilisateur'] = $idUtilisateur;
+
+        // Construire la requête SQL
+        $query = "UPDATE utilisateur SET " . implode(", ", $updateFields) . " WHERE id_utilisateur = :id_utilisateur";
+
+        // Préparer la requête
+        $stmt = $this->bdd->prepare($query);
+
+
+        return $stmt->execute($params);
+    }
 }
+
 ?>
+
+
