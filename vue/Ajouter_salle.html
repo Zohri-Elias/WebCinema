@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une Séance</title>
+    <title>Ajouter une salle</title>
     <style>
         body {
             margin: 0;
@@ -28,20 +28,6 @@
             text-align: center;
             background-color: #222;
         }
-        .sidebar-menu {
-            list-style-type: none;
-            padding: 0;
-        }
-        .sidebar-menu li {
-            padding: 15px;
-            text-align: center;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .sidebar-menu li:hover {
-            background-color: #555;
-        }
         .content {
             margin-left: 250px;
             padding: 40px;
@@ -58,7 +44,7 @@
             width: 60%;
             margin: auto;
         }
-        .form-container input, .form-container select, .form-container button {
+        .form-container input, .form-container textarea, .form-container button {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -81,31 +67,23 @@
 <div class="sidebar">
     <div class="sidebar-header">MATERIAL ADMIN PRO</div>
     <ul class="sidebar-menu">
-        <li onclick="window.location.href='ajout_film.html'">Ajouter un film</li>
-        <li onclick="window.location.href='ajout_seance.html'">Ajouter une séance</li>
+        <li onclick="window.location.href='../src/traitement/AjoutSalleTrT.php'">Ajouter une salle</li>
+        <li onclick="window.location.href='modifier_salle.html'">Modifier une salle</li>
     </ul>
 </div>
 
 <div class="content">
-    <h1>Ajouter une Séance</h1>
+    <h1>Ajouter une salle</h1>
     <div class="form-container">
-        <form action="../src/traitement/AjoutSceanceTrt.php" method="POST">
-            <label for="date">Date :</label>
-            <input type="date" id="date" name="date" required>
+        <form action="../src/traitement/AjoutSalleTrT.php" method="POST">
 
-            <label for="heure">Heure :</label>
-            <input type="time" id="heure" name="heure" required>
+            <label for="nom_salle">Titre du film :</label>
+            <input type="text" id="nom_salle" name="nom_salle" required>
 
-            <label for="nb_place_res">Nombre de places restantes :</label>
-            <input type="number" id="nb_place_res" name="nb_place_res"  required>
+            <label for="nb_place">nombre de place :</label>
+            <input type="number" id="nb_place" name="nb_salle" required>
 
-            <label for="ref_salle">Référence Salle :</label>
-            <input type="number" id="ref_salle" name="ref_salle" required>
-
-            <label for="ref_film">Référence Film :</label>
-            <input type="number" id="ref_film" name="ref_film" required>
-
-            <button type="submit" name="ok">Ajouter la Séance</button>
+            <button type="submit" name="ok">Ajouter la salle</button>
         </form>
     </div>
 </div>

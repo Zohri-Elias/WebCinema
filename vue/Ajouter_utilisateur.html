@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une Séance</title>
+    <title>Ajouter un Utilisateur</title>
     <style>
         body {
             margin: 0;
@@ -81,33 +81,54 @@
 <div class="sidebar">
     <div class="sidebar-header">MATERIAL ADMIN PRO</div>
     <ul class="sidebar-menu">
-        <li onclick="window.location.href='ajout_film.html'">Ajouter un film</li>
-        <li onclick="window.location.href='ajout_seance.html'">Ajouter une séance</li>
+        <li onclick="window.location.href='Administration.html'">Menu</li>
     </ul>
 </div>
 
-<div class="content">
-    <h1>Ajouter une Séance</h1>
-    <div class="form-container">
-        <form action="../src/traitement/AjoutSceanceTrt.php" method="POST">
-            <label for="date">Date :</label>
-            <input type="date" id="date" name="date" required>
-
-            <label for="heure">Heure :</label>
-            <input type="time" id="heure" name="heure" required>
-
-            <label for="nb_place_res">Nombre de places restantes :</label>
-            <input type="number" id="nb_place_res" name="nb_place_res"  required>
-
-            <label for="ref_salle">Référence Salle :</label>
-            <input type="number" id="ref_salle" name="ref_salle" required>
-
-            <label for="ref_film">Référence Film :</label>
-            <input type="number" id="ref_film" name="ref_film" required>
-
-            <button type="submit" name="ok">Ajouter la Séance</button>
-        </form>
+<div class="form-container">
+    <div class="form-header">
+        <h2>Inscription</h2>
+        <p>Créez votre compte en quelques étapes simples</p>
     </div>
+    <form method="POST" action="../src/traitement/trt1.php">
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-person"></i>
+                </span>
+                <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez votre nom" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="prenom" class="form-label">Prénom</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-person"></i>
+                </span>
+                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Adresse Email</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-envelope"></i>
+                </span>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre email" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="mdp" class="form-label">Mot de passe</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-lock"></i>
+                </span>
+                <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez votre mot de passe" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" name ="ok">Envoyer</button>
+    </form>
 </div>
 
 </body>

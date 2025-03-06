@@ -52,47 +52,5 @@ class UtilisateurRepository
         return null;
     }
 
-    public function modifierUtilisateur($prenom, $nom, $email, $idUtilisateur) {
-
-        $updateFields = [];
-        $params = [];
-
-
-        if ($prenom) {
-            $updateFields[] = "prenom = :prenom";
-            $params['prenom'] = $prenom;
-        }
-
-        if ($nom) {
-            $updateFields[] = "nom = :nom";
-            $params['nom'] = $nom;
-        }
-
-        if ($email) {
-            $updateFields[] = "email = :email";
-            $params['email'] = $email;
-        }
-
-
-        if (empty($updateFields)) {
-            return false;
-        }
-
-
-        $updateFields[] = "id_utilisateur = :id_utilisateur";
-        $params['id_utilisateur'] = $idUtilisateur;
-
-
-        $query = "UPDATE utilisateur SET " . implode(", ", $updateFields) . " WHERE id_utilisateur = :id_utilisateur";
-
-        // Préparer la requête
-        $stmt = $this->bdd->prepare($query);
-
-
-        return $stmt->execute($params);
-    }
 }
-
 ?>
-
-

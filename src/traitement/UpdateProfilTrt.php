@@ -60,10 +60,10 @@ if (isset($_POST['ok'])) {
 
     $req = "UPDATE utilisateur SET " . implode(", ", $updateFields) . " WHERE id_utilisateur = :id_utilisateur";
 
-
+    // Préparer et exécuter la requête SQL
     $stmt = $bdd->prepare($req);
 
-
+    // Exécuter la requête avec les paramètres
     if ($stmt->execute($params)) {
         echo "Mise à jour réussie!";
         header('Location: ../../vue/Profile.php');

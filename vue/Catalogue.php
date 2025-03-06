@@ -38,7 +38,9 @@ session_start();
                 <button class="btn btn-outline-dark" type="button">
                     <i class="bi-cart-fill me-1"></i>
                     <a class="link-dark text-decoration-none" href="Panier.php">Panier</a>
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">
+    <?= isset($_SESSION['panier']) ? count($_SESSION['panier']) : 0 ?>
+</span>
                 </button>
             </form>
         </div>
@@ -64,8 +66,9 @@ session_start();
                     <div class="card h-100">
                         <!-- Image du film -->
                         <img class="card-img-top"
-                             src="<?= htmlspecialchars($film->getImage() ? $film->getImage() : '../assets/img/64c4552214012a590dae8b9469b0eb62.jpeg') ?>"
+                             src="<?= htmlspecialchars($film->getImage()) ?>"
                              alt="<?= htmlspecialchars($film->getNomFilm()) ?>" />
+
 
                         <!-- Détails du film -->
 
