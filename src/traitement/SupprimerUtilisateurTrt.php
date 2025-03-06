@@ -5,12 +5,9 @@ require_once '../../src/modele/Utilisateur.php';
 require_once '../../src/repository/UtilisateurRepository.php';
 
 if (isset($_POST['ok'])) {
-    extract($_POST);
-    var_dump($_POST);
-
 
     if (isset($_POST['ok']) && isset($_POST['idUtilisateur'])) {
-        $idFilm = intval($_POST['idUtilisateur']);
+        $idUtilisateur = intval($_POST['idUtilisateur']);
 
         $utilisateurRepository = new utilisateurRepository();
         $utilisateur = new Utilisateur([
