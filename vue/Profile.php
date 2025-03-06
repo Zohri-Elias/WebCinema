@@ -31,7 +31,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="container">
     <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['nom']); ?>
         <?php echo htmlspecialchars($_SESSION['prenom']); ?>!</h1>
-    <form action="../src/repository/UtilisateurRepository.php" method="POST">
+    <form action="../src/traitement/UpdateProfilTrt.php" method="POST">
         <label for="nom">Nouveau nom :</label>
         <input type="text" id="nom" name="nom"><br>
 
@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
         <p><strong>Rôle :</strong> <?php echo htmlspecialchars($_SESSION['role']); ?></p>
         <input type="text" id="role" name="role"><br>
 
-        <button type="submit">Mettre à jour</button>
+        <button type="submit" name ="ok">Mettre à jour</button>
     </form>
 </div>
 
