@@ -66,6 +66,14 @@ class UtilisateurRepository
             "role" => $utilisateur->getRole()
         ]);
     }
+    public function supprimerUtilisateur(Utilisateur $utilisateur){
+
+        $req = $this->bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur');
+
+        return $req->execute([
+            "id_utilisateur" => $utilisateur->getIdUtilisateur(),
+        ]);
+    }
 
 }
 ?>
