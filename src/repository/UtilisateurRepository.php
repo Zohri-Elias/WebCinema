@@ -52,10 +52,8 @@ class UtilisateurRepository
         return null;
     }
 
-    public function modifierUtilisateur(Utilisateur $utilisateur): bool
+    public function modifierUtilisateur(Utilisateur $utilisateur)
     {
-
-        $hashedPassword = password_hash($utilisateur->getMdp(), PASSWORD_DEFAULT);
 
         $req = $this->bdd->getBdd()->prepare('UPDATE utilisateur 
             SET prenom = :prenom, nom = :nom, email = :email, role = :role
@@ -65,7 +63,6 @@ class UtilisateurRepository
             "nom" => $utilisateur->getNom(),
             "prenom" => $utilisateur->getPrenom(),
             "email" => $utilisateur->getEmail(),
-            "mdp" => $hashedPassword,
             "role" => $utilisateur->getRole()
         ]);
     }

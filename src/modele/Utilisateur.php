@@ -15,6 +15,16 @@ class Utilisateur
     }
 
     /**
+     * @param mixed $idUtilisateur
+     */
+    public function setIdUtilisateur($idUtilisateur)
+    {
+        $this->idUtilisateur = $idUtilisateur;
+    }
+
+
+
+    /**
      * @return mixed
      */
     public function getNom()

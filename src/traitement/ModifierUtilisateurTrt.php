@@ -15,16 +15,17 @@ if (isset($_POST['ok'])) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $utilisateurRepository = new UtilisateurRepository();
         $utilisateur = new Utilisateur([
+            'idUtilisateur' => $idUtilisateur,
             'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,
-            'mdp' => $mdp,
+            'role' => $role,
         ]);
 
         $resultat = $utilisateurRepository->modifierUtilisateur($utilisateur);
         if ($resultat) {
             echo "Inscription réussie!";
-            header('Location: ../../vue/Connexion.html');
+            header('Location: ../../vue/Administration.html');
         } else {
             echo "Erreur lors de l'inscription.";
         }
