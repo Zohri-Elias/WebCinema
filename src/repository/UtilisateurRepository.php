@@ -51,6 +51,28 @@ class UtilisateurRepository
         }
         return null;
     }
+    public function modifierUtilisateur(Utilisateur $utilisateur)
+    {
+
+        $req = $this->bdd->getBdd()->prepare('UPDATE utilisateur 
+            SET prenom = :prenom, nom = :nom, email = :email, role = :role
+            WHERE id_utilisateur = :id_utilisateur');
+        return $req->execute([
+            "id_utilisateur" => $utilisateur->getIdUtilisateur(),
+            "nom" => $utilisateur->getNom(),
+            "prenom" => $utilisateur->getPrenom(),
+            "email" => $utilisateur->getEmail(),
+            "role" => $utilisateur->getRole()
+        ]);
+    }
+    public function supprimerUtilisateur(Utilisateur $utilisateur){
+
+        $req = $this->bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur');
+
+        return $req->execute([
+            "id_utilisateur" => $utilisateur->getIdUtilisateur(),
+        ]);
+    }
 
 }
 ?>
