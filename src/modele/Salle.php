@@ -4,55 +4,43 @@ class Salle
 {
     private $idSalle;
     private $nomSalle;
-    private $nb_place;
+    private $nbPlace;
 
-    /**
-     * @return mixed
-     */
+    public function __construct($idSalle = null, $nomSalle, $nbPlace)
+    {
+        $this->idSalle = $idSalle;
+        $this->nomSalle = $nomSalle;
+        $this->nbPlace = $nbPlace;
+    }
+
     public function getNbPlace()
     {
-        return $this->nb_place;
+        return $this->nbPlace;
     }
 
-    /**
-     * @param mixed $nb_place
-     */
-    public function setNbPlace($nb_place)
+    public function setNbPlace($nbPlace)
     {
-        $this->nb_place = $nb_place;
+        $this->nbPlace = $nbPlace;
     }
 
-    /**
-     * @return mixed
-     */
     public function getNomSalle()
     {
         return $this->nomSalle;
     }
 
-    /**
-     * @param mixed $nomSalle
-     */
     public function setNomSalle($nomSalle)
     {
         $this->nomSalle = $nomSalle;
     }
 
-    /**
-     * @return mixed
-     */
     public function getIdSalle()
     {
         return $this->idSalle;
     }
 
-    /**
-     * @param mixed $idSalle
-     */
     public function setIdSalle($idSalle)
     {
         $this->idSalle = $idSalle;
     }
-
-
 }
+?>

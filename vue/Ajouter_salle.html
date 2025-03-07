@@ -44,7 +44,7 @@
             width: 60%;
             margin: auto;
         }
-        .form-container input, .form-container textarea, .form-container button {
+        .form-container input, .form-container button {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -76,12 +76,11 @@
     <h1>Ajouter une salle</h1>
     <div class="form-container">
         <form action="../src/traitement/AjoutSalleTrT.php" method="POST">
-
-            <label for="nom_salle">Nom de salle :</label>
+            <label for="nom_salle">Nom de la salle :</label>
             <input type="text" id="nom_salle" name="nom_salle" required>
 
-            <label for="nb_place">nombre de place :</label>
-            <input type="number" id="nb_place" name="nb_salle" required>
+            <label for="nb_place">Nombre de places :</label>
+            <input type="number" id="nb_place" name="nb_place" required>
 
             <button type="submit" name="ok">Ajouter la salle</button>
         </form>

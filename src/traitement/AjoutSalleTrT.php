@@ -7,22 +7,22 @@ $database = new Bdd();
 $bdd = $database->getBdd();
 
 if (isset($_POST['ok'])) {
-    extract($_POST);
-    var_dump($_POST);
+    // Récupération des données depuis le formulaire
+    $nomSalle = $_POST['nom_salle'];
+    $nbPlace = $_POST['nb_place'];
 
-    if (!empty($nom_salle) && !empty($nb_place)) {
+    // Vérification que les champs ne sont pas vides
+    if (!empty($nomSalle) && !empty($nbPlace)) {
+        // Création de l'objet Salle
         $salleRepository = new SalleRepository();
+        $salle = new Salle(null, $nomSalle, $nbPlace);  // 'null' pour l'id puisque c'est un nouvel enregistrement
 
-        $film = new Salle($_POST);
-        $film->setNomSalle($_POST['nom_salle']);
-        $film->setNbPlace($_POST['nb_place']);
-
-
-        $resultat = $filmRepository->ajouterSalle($film);
+        // Tentative d'ajout de la salle
+        $resultat = $salleRepository->ajouterSalle($salle);
 
         if ($resultat) {
             echo "Ajout réussi!";
-            header('Location: ../../vue/Catalogue.php');
+            header('Location: ../../vue/Catalogue.php'); // Redirection après ajout
             exit();
         } else {
             echo "Erreur lors de l'ajout de la salle.";

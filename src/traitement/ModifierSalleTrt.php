@@ -1,28 +1,30 @@
 <?php
+
 require_once '../../src/bdd/Bdd.php';
 require_once '../../src/modele/Salle.php';
 require_once '../../src/repository/SalleRepository.php';
 
-session_start();
+$database = new Bdd();
+$bdd = $database->getBdd();
 
-// Vérifiez que l'utilisateur est connecté
-if (!isset($_SESSION['user_id'])) {
-}
+if (isset($_POST['ok'])) {
+    // Récupération des données depuis le formulaire
+    $idSalle = $_POST['idSalle'];
+    $nomSalle = $_POST['nomSalle'];
+    $nbPlace = $_POST['nbPlace'];
 
-// Créez un objet Salle avec les données du formulaire
-$salle = new Salle();
-$salle->setNomSalle($_POST['nomSalle']);
-$salle->setNbSalle($_POST['nbPlace']);
+    // Création de l'objet Salle avec les données
+    $salleRepository = new SalleRepository();
+    $salle = new Salle($idSalle, $nomSalle, $nbPlace);
 
-// Appelez la méthode pour modifier la salle
-$salleRepository = new SalleRepository();
-$resultat = $salleRepository->modifiersalle($salle);
-
-if ($resultat) {
-    echo "Profil mis à jour avec succès !";
-    header('Location: ../../../vue/administration.html');
-    exit();
-} else {
-    echo "Erreur lors de la mise à jour du profil.";
+    // Tentative de modification de la salle
+    $resultat = $salleRepository->modifierSalle($salle);
+    if ($resultat) {
+        echo "Modification réussie!";
+        header('Location: ../../vue/Administration.html');
+        exit();
+    } else {
+        echo "Erreur lors de la modification.";
+    }
 }
 ?>
