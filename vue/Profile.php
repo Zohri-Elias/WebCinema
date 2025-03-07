@@ -113,6 +113,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="form-footer">
         <a href="../src/traitement/Logout.php">Déconnexion</a>
     </div>
+    <a href="../Index.php">Retour à l'acceuil</a>
 </div>
 
 </body>
