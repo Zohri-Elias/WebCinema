@@ -1,5 +1,4 @@
 <?php
-
 class Seance
 {
     private $id_seance;
@@ -9,26 +8,32 @@ class Seance
     private $ref_salle;
     private $ref_film;
 
+    // Constructeur acceptant un tableau avec les propriétés
     public function __construct(array $donnees)
     {
         $this->hydrate($donnees);
     }
 
+    // Hydratation de l'objet à partir du tableau
     public function hydrate(array $donnees)
     {
         foreach ($donnees as $key => $value) {
-            $method = 'set'.ucfirst($key);
+            $method = 'set'.ucfirst($key); // Génération du nom de la méthode
             if (method_exists($this, $method)) {
                 $this->$method($value);
-                var_dump($key, $value); // Vérifier les données
             }
         }
     }
 
-
-    public function getIdSeance()
+    // Getters et setters
+    public function getId_seance()
     {
         return $this->id_seance;
+    }
+
+    public function setId_seance($id_seance)
+    {
+        $this->id_seance = $id_seance;
     }
 
     public function getDate()
@@ -36,72 +41,49 @@ class Seance
         return $this->date;
     }
 
-    public function getHeure()
-    {
-        return $this->heure;
-    }
-
-    public function getNbPlaceRes()
-    {
-        return $this->nb_place_res;
-    }
-
-    public function getRefSalle()
-    {
-        return $this->ref_salle;
-    }
-
-    public function getRefFilm()
-    {
-        return $this->ref_film;
-    }
-    /**
-     * @param mixed $ref_film
-     */
-    public function setRefFilm($ref_film)
-    {
-        $this->ref_film = $ref_film;
-    }
-
-    /**
-     * @param mixed $ref_salle
-     */
-    public function setRefSalle($ref_salle)
-    {
-        $this->ref_salle = (int)$ref_salle;
-    }
-
-    /**
-     * @param mixed $nb_place_res
-     */
-    public function setNbPlaceRes($nb_place_res)
-    {
-        $this->nb_place_res = (int)$nb_place_res;
-    }
-
-    /**
-     * @param mixed $heure
-     */
-    public function setHeure($heure)
-    {
-        $this->heure = $heure;
-    }
-
-    /**
-     * @param mixed $date
-     */
     public function setDate($date)
     {
         $this->date = $date;
     }
 
-    /**
-     * @param mixed $id_seance
-     */
-    public function setIdSeance($id_seance)
+    public function getHeure()
     {
-        $this->id_seance = (int)$id_seance;
+        return $this->heure;
     }
 
+    public function setHeure($heure)
+    {
+        $this->heure = $heure;
+    }
 
+    public function getNb_place_res()
+    {
+        return $this->nb_place_res;
+    }
+
+    public function setNb_place_res($nb_place_res)
+    {
+        $this->nb_place_res = $nb_place_res;
+    }
+
+    public function getRef_salle()
+    {
+        return $this->ref_salle;
+    }
+
+    public function setRef_salle($ref_salle)
+    {
+        $this->ref_salle = $ref_salle;
+    }
+
+    public function getRef_film()
+    {
+        return $this->ref_film;
+    }
+
+    public function setRef_film($ref_film)
+    {
+        $this->ref_film = $ref_film;
+    }
 }
+?>
