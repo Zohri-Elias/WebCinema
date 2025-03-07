@@ -60,6 +60,7 @@ if (isset($_POST['ok'])) {
 
 
     $req = "UPDATE utilisateur SET " . implode(", ", $updateFields) . " WHERE id_utilisateur = :id_utilisateur";
+    // implode tableau en chaine de caractère
 
 
     $stmt = $bdd->prepare($req);
