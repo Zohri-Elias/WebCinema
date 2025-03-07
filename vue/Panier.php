@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-// Vérifie si le panier existe
 if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = [];
 }
 
-// ✅ Ajout d'un film au panier
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ajouter_panier'])) {
     $id_film = $_POST['id_film'];
     $film_nom = $_POST['film_nom'];
@@ -29,24 +27,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ajouter_panier'])) {
         ];
     }
 
-    // ✅ Redirige vers le catalogue pour éviter l'erreur de rechargement du formulaire
     header("Location: catalogue.php");
     exit();
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Confirmer_id'])) {
+    $idAConfirmer = $_POST['Confirmer_id'];
 
-// ✅ Suppression d'un film du panier
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['supprimer_id'])) {
-    $idASupprimer = $_POST['supprimer_id'];
-
-    // Supprime uniquement l'élément correspondant
-    $_SESSION['panier'] = array_values(array_filter($_SESSION['panier'], function ($film) use ($idASupprimer) {
-        return $film["id"] != $idASupprimer;
+    $_SESSION['panier'] = array_values(array_filter($_SESSION['panier'], function ($film) use ($idAConfirmer) {
+        return $film["id"] != $idAConfirmer;
     }));
-
-    // ✅ Redirige vers le panier après suppression
-    header("Location: Panier.php");
+    header("Location: Confirmer.php");
     exit();
 }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['supprimer_id'])) {
+        $idASupprimer = $_POST['supprimer_id'];
+
+        $_SESSION['panier'] = array_values(array_filter($_SESSION['panier'], function ($film) use ($idASupprimer) {
+            return $film["id"] != $idASupprimer;
+        }));
+
+        header("Location: Panier.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -84,9 +87,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['supprimer_id'])) {
                             <input type="hidden" name="supprimer_id" value="<?= ($film['id']) ?>">
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>
+                        <form method="POST" action="Panier.php">
+                            <input type="hidden" name="Confirmer_id" value="<?= ($film['id']) ?>">
+                            <button type="submit" class="btn btn-success">Confirmer</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
+
             </tbody>
         </table>
     <?php endif; ?>
