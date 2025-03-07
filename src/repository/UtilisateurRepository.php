@@ -51,32 +51,28 @@ class UtilisateurRepository
         }
         return null;
     }
+    public function modifierUtilisateur(Utilisateur $utilisateur)
+    {
 
-    public function modifierUtilisateur(Utilisateur $utilisateur) {
-        if (!isset($_SESSION['user_id'])) {
-            throw new Exception("ID utilisateur non défini dans la session.");
-        }
-
-        $hashedPassword = password_hash($utilisateur->getMdp(), PASSWORD_DEFAULT);
-
-        $req = $this->bdd->getBdd()->prepare('
-        UPDATE utilisateur 
-        SET prenom = :prenom, nom = :nom, email = :email, mdp = :mdp 
-        WHERE id = :id;
-    ');
-
-        $success = $req->execute([
-            "id" => $_SESSION['user_id'],
+        $req = $this->bdd->getBdd()->prepare('UPDATE utilisateur 
+            SET prenom = :prenom, nom = :nom, email = :email, role = :role
+            WHERE id_utilisateur = :id_utilisateur');
+        return $req->execute([
+            "id_utilisateur" => $utilisateur->getIdUtilisateur(),
             "nom" => $utilisateur->getNom(),
             "prenom" => $utilisateur->getPrenom(),
             "email" => $utilisateur->getEmail(),
-            "mdp" => $hashedPassword,
-            "role"=> $utilisateur->getRole()
+            "role" => $utilisateur->getRole()
         ]);
-
-        return $success;
     }
+    public function supprimerUtilisateur(Utilisateur $utilisateur){
 
+        $req = $this->bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur');
+
+        return $req->execute([
+            "id_utilisateur" => $utilisateur->getIdUtilisateur(),
+        ]);
+    }
 
 }
 ?>

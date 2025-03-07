@@ -1,31 +1,36 @@
 <?php
+
 require_once '../../src/bdd/Bdd.php';
 require_once '../../src/modele/Utilisateur.php';
 require_once '../../src/repository/UtilisateurRepository.php';
 
-session_start();
 
-// Vérifiez que l'utilisateur est connecté
-if (!isset($_SESSION['user_id'])) {
-}
+$database = new Bdd();
+$bdd = $database->getBdd();
 
-// Créez un objet Utilisateur avec les données du formulaire
-$utilisateur = new Utilisateur();
-$utilisateur->setNom($_POST['nom']);
-$utilisateur->setPrenom($_POST['prenom']);
-$utilisateur->setEmail($_POST['email']);
-$utilisateur->setMdp($_POST['mdp']);
-$utilisateur->setRole($_POST['role']);
+if (isset($_POST['ok'])) {
+    extract($_POST);
+    var_dump($_POST);
 
-// Appelez la méthode pour modifier l'utilisateur
-$utilisateurRepository = new UtilisateurRepository();
-$resultat = $utilisateurRepository->modifierUtilisateur($utilisateur);
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $utilisateurRepository = new UtilisateurRepository();
+        $utilisateur = new Utilisateur([
+            'idUtilisateur' => $idUtilisateur,
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'role' => $role,
+        ]);
 
-if ($resultat) {
-    echo "Profil mis à jour avec succès !";
-    header('Location: ../../vue/profil.php');
-    exit();
-} else {
-    echo "Erreur lors de la mise à jour du profil.";
+        $resultat = $utilisateurRepository->modifierUtilisateur($utilisateur);
+        if ($resultat) {
+            echo "Inscription réussie!";
+            header('Location: ../../vue/Administration.html');
+        } else {
+            echo "Erreur lors de l'inscription.";
+        }
+    } else {
+        echo "Email invalide.";
+    }
 }
 ?>

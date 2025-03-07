@@ -16,5 +16,22 @@ public function ConfirmReservation(Reservation $reservation){
         return false;
     }
 }
+    public function Reservation(Film $film){
+        $sql = "SELECT id_film,nom_film,duree,image,genre,descriptions FROM film WHERE id_film = :id_film";
+        $req = $this->bdd->getBdd()->prepare($sql);
+        $res = $req->execute(array(
+            'id_film' => $film->getIdFilm(),
+            'nom_film' => $film->getNomFilm(),
+            'duree' => $film->getDuree(),
+            'image' => $film->getImage(),
+            'genre' => $film->getGenre(),
+            'descriptions' => $film->getDescription()
+        ));
 
+        if ($res == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modifier un Utilisateur</title>
+  <title>Supprimer un Utilisateur</title>
   <style>
     body {
       margin: 0;
@@ -87,10 +87,10 @@
 
 <div class="form-container">
   <div class="form-header">
-    <h2>Modifier un Utilisateur</h2>
+    <h2>Supprimer un Utilisateur</h2>
     <p>Créez votre compte en quelques étapes simples</p>
   </div>
-  <form method="POST" action="../src/traitement/ModifierUtilisateurTrt.php">
+  <form method="POST" action="../src/traitement/SupprimerUtilisateurTrt.php">
     <div class="mb-3">
       <label for="idUtilisateur" class="form-label">Id:</label>
       <div class="input-group">
@@ -100,51 +100,6 @@
         <input type="text" class="form-control" id="idUtilisateur" name="idUtilisateur" placeholder="Entrez l'id de l'utilisateur" required>
       </div>
     </div>
-    <div class="mb-3">
-      <label for="nom" class="form-label">Nom</label>
-      <div class="input-group">
-                <span class="input-group-text">
-                    <i class="bi bi-person"></i>
-                </span>
-        <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez le nom" required>
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="prenom" class="form-label">Prénom</label>
-      <div class="input-group">
-                <span class="input-group-text">
-                    <i class="bi bi-person"></i>
-                </span>
-        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez le prénom" required>
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Adresse Email</label>
-      <div class="input-group">
-                <span class="input-group-text">
-                    <i class="bi bi-envelope"></i>
-                </span>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Entrez le email" required>
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="mdp" class="form-label">Mot de passe</label>
-      <div class="input-group">
-                <span class="input-group-text">
-                    <i class="bi bi-lock"></i>
-                </span>
-        <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez le mot de passe" required>
-      </div>
-    </div>
-      <div class="mb-3">
-          <label for="role" class="form-label">Role</label>
-          <div class="input-group">
-                <span class="input-group-text">
-                    <i class="bi bi-person"></i>
-                </span>
-              <input type="text" class="form-control" id="role" name="role" placeholder="Entrez le role" required>
-          </div>
-      </div>
     <button type="submit" class="btn btn-primary w-100" name ="ok">Envoyer</button>
   </form>
 </div>
