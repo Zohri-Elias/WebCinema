@@ -1,6 +1,6 @@
 <?php
 
-class Film
+class Salle
 {
     private $idSalle;
     private $nomSalle;

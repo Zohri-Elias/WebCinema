@@ -54,9 +54,9 @@ class SalleRepository
 
         $req = $this->bdd->prepare($sql);
         $req->execute([
-            'id_film' => $salle->getIdSalle(),
-            'nom_film' => $salle->getNomSalle(),
-            'genre' => $salle->getNbSalle(),
+            'id_salle' => $salle->getIdSalle(),
+            'nom_salle' => $salle->getNomSalle(),
+            'nb_salle' => $salle->getNbSalle(),
         ]);
 
         return $req->rowCount() > 0;
