@@ -17,20 +17,19 @@ if (isset($_POST['ok'])) {
     $email = isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : null;
     $mdp = isset($_POST['mdp']) && !empty($_POST['mdp']) ? $_POST['mdp'] : null;
 
-    // Récupération de l'ID utilisateur depuis la session
+
     $idUtilisateur = $_SESSION['user_id'];
 
-    // Mise à jour de la session avec les nouvelles données (prénom, nom, email)
+
     if ($prenom) $_SESSION['prenom'] = $prenom;
     if ($nom) $_SESSION['nom'] = $nom;
     if ($email) $_SESSION['email'] = $email;
 
-    // Si un mot de passe est fourni, on le hache avant de le mettre à jour
     if ($mdp) {
-        $mdp = password_hash($mdp, PASSWORD_BCRYPT);  // Hachage du mot de passe
+        $mdp = password_hash($mdp, PASSWORD_BCRYPT);
     }
 
-    // On prépare la requête de mise à jour
+
     $updateFields = [];
     $params = ['id_utilisateur' => $idUtilisateur];
 
@@ -59,15 +58,15 @@ if (isset($_POST['ok'])) {
         exit();
     }
 
-    // Construction de la requête SQL
+
     $req = "UPDATE utilisateur SET " . implode(", ", $updateFields) . " WHERE id_utilisateur = :id_utilisateur";
 
-    // Préparation et exécution de la requête SQL
+
     $stmt = $bdd->prepare($req);
 
     if ($stmt->execute($params)) {
         echo "Mise à jour réussie!";
-        // Redirection après la mise à jour
+
         header('Location: ../../vue/Profile.php');
         exit();
     } else {
