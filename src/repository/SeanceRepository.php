@@ -1,32 +1,66 @@
 <?php
 class SeanceRepository
 {
-    private $pdo;
+    private $bdd;
 
     public function __construct()
     {
-        $database = new Bdd();
-        $this->pdo = $database->getBdd();
+        $this->bdd = new Bdd();
     }
 
-    // Ajouter une séance dans la base de données
     public function ajouterSeance(Seance $seance)
     {
-        try {
-            $sql = "INSERT INTO seances (date_seance, heure, ref_film, ref_salle, nb_place_res) 
-                    VALUES (:date_seance, :heure, :ref_film, :ref_salle, :nb_place_res)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':date_seance', $seance->getDate());
-            $stmt->bindParam(':heure', $seance->getHeure());
-            $stmt->bindParam(':ref_film', $seance->getRef_film());
-            $stmt->bindParam(':ref_salle', $seance->getRef_salle());
-            $stmt->bindParam(':nb_place_res', $seance->getNb_place_res());
 
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            echo "Erreur lors de l'ajout de la séance: " . $e->getMessage();
+        $req = $this->bdd->getBdd()->prepare('
+        INSERT INTO seance (date, heure, nb_place_res, ref_salle, ref_film) 
+        VALUES (:date, :heure, :nb_place_res, :ref_salle, :ref_film)');
+
+
+        $success = $req->execute([
+            "date" => $seance->getDate(),
+            "heure" => $seance->getHeure(),
+            "nb_place_res" => $seance->getNbPlaceRes(),
+            "ref_salle" => $seance->getRefSalle(),
+            "ref_film" => $seance->getRefFilm()
+        ]);
+
+
+        return $success;
+    }
+
+
+
+    public function modifSeance(Seance $seance)
+    {
+        $sql = "UPDATE Seance SET date=:date,heure=:heure,nb_place_res=:nb_place_res,ref_salle=:ref_salle,ref_film=:ref_film";
+        $req = $this->bdd->getBdd()->prepare($sql);
+        $res = $req->execute(array(
+            'date' => $seance->getDate(),
+            'heure' => $seance->getHeure(),
+            'nb_place_res' => $seance->getNbPlaceRes(),
+            'ref_salle' => $seance->getRefSalle(),
+            'ref_film' => $seance->getRefFilm()
+        ));
+        if ($res == true) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
+    public function suppressionSeance(Seance $seance)
+    {
+        $sql = "DELETE FROM Seance WHERE id_Seance = :id_Seance";
+        $req = $this->bdd->getBdd()->prepare($sql);
+        $res = $req->execute(array(
+            'id_seance' => $seance->getId_seance()
+        ));
+        if ($res == true) {
+            return true;
+        } else {
             return false;
         }
     }
 }
-?>
