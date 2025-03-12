@@ -60,6 +60,19 @@
         .form-container button:hover {
             background-color: #c82333;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
     </style>
 </head>
 <body>
@@ -83,6 +96,41 @@
             <button type="submit" name="ok">Supprimer le film</button>
         </form>
     </div>
+
+    <h2>Liste des Films</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID Film</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Durée</th>
+            <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+            require_once '../src/bdd/Bdd.php';
+            $database = new Bdd();
+            $bdd = $database->getBdd();
+
+        $sql = "SELECT id_film, nom_film, description, genre, duree, image FROM Film";
+        $stmt = $bdd->query($sql);
+
+        while ($film = $stmt->fetch()) {
+        echo "<tr>
+            <td>" . htmlspecialchars($film['id_film']) . "</td>
+            <td>" . htmlspecialchars($film['nom_film']) . "</td>
+            <td>" . htmlspecialchars($film['description']) . "</td>
+            <td>" . htmlspecialchars($film['genre']) . "</td>
+            <td>" . htmlspecialchars($film['duree']) . " min</td>
+            <td><img src='" . htmlspecialchars($film['image']) . "' alt='" . htmlspecialchars($film['nom_film']) . "' width='100'></td>
+        </tr>";
+        }
+        ?>
+        </tbody>
+    </table>
 </div>
 
 </body>

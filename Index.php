@@ -9,7 +9,11 @@ $bdd = new PDO(
 session_start();
 // port=3307;
 $films = $bdd->query("SELECT * FROM film ORDER BY id_film DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
+$isConnected = isset($_SESSION['user_id']);
+$isAdmin = $isConnected && $_SESSION['role'] == 'Admin'; // On vérifie si l'utilisateur est admin
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -51,6 +55,11 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film DESC LIMIT 3")->fetchA
                             </ul>
                             <?php if (isset($_SESSION['user_id'])): ?>
                         <li class="nav-item"><a class="nav-link" href="vue/Profile.php">Profil</a></li>
+                        <?php endif; ?>
+                        </li>
+                        <?php if ($isAdmin): ?>
+                            <!-- Si l'utilisateur est admin, afficher ce bouton -->
+                        <li class="nav-item"><a class="nav-link" href='./vue/Administration.html'">Admin Programming</a>
                         <?php endif; ?>
                         </li>
                     </ul>
@@ -199,7 +208,7 @@ $films = $bdd->query("SELECT * FROM film ORDER BY id_film DESC LIMIT 3")->fetchA
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 
-        <a href="./vue/Administration.html"><button>Retour à la liste des films</button></a>
+
 
 
     </body>

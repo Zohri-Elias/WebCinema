@@ -74,6 +74,18 @@
         .form-container button:hover {
             background-color: #0056b3;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +120,41 @@
             <button type="submit" name="ok">Ajouter la Séance</button>
         </form>
     </div>
+
+    <h2>Liste des Séances</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Nombre de places restantes</th>
+            <th>Référence Salle</th>
+            <th>Référence Film</th>
+        </tr>
+
+        <?php
+require_once '../src/bdd/Bdd.php';
+$database = new Bdd();
+$bdd = $database->getBdd();
+
+        $sql = "SELECT id_seance, date, heure, nb_place_res, ref_salle, ref_film FROM Seance";
+        $stmt = $bdd->query($sql);
+
+
+        while ($seance = $stmt->fetch()) {
+
+        echo "<tr>
+        <td>" . htmlspecialchars($seance['id_seance']) . "</td>
+        <td>" . htmlspecialchars($seance['date']) . "</td>
+        <td>" . htmlspecialchars($seance['heure']) . "</td>
+        <td>" . htmlspecialchars($seance['nb_place_res']) . "</td>
+        <td>" . htmlspecialchars($seance['ref_salle']) . "</td>
+        <td>" . htmlspecialchars($seance['ref_film']) . "</td>
+    </tr>";
+        }
+        ?>
+
+    </table>
 </div>
 
 </body>

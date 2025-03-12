@@ -7,12 +7,13 @@ $database = new Bdd();
 $bdd = $database->getBdd();
 
 if (isset($_POST['ok'])) {
-    $idSeance = $_POST['id_seance'];
+    $id_Seance = $_POST['id_seance'];
 
-    if (!empty($idSeance)) {
+    if (!empty($id_Seance)) {
         $seanceRepository = new SeanceRepository();
 
-        $resultat = $seanceRepository->supprimerSeance($idSeance);
+        $resultat = $seanceRepository->supprimerSeance($id_Seance);
+
 
         if ($resultat) {
             echo "Séance supprimée avec succès!";
