@@ -58,7 +58,6 @@ $isAdmin = $isConnected && $_SESSION['role'] == 'Admin'; // On vérifie si l'uti
                         <?php endif; ?>
                         </li>
                         <?php if ($isAdmin): ?>
-                            <!-- Si l'utilisateur est admin, afficher ce bouton -->
                         <li class="nav-item"><a class="nav-link" href='./vue/Administration.html'">Admin Programming</a>
                         <?php endif; ?>
                         </li>

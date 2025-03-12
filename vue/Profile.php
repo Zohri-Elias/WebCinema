@@ -87,7 +87,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
 
 <div class="container">
-    <h1>Modifier votre profil</h1>
+    <h1>Profil</h1>
 
     <form action="../src/traitement/UpdateProfilTrt.php" method="POST">
         <label for="nom">Nom :</label>
